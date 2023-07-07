@@ -25,11 +25,11 @@ To streamline the hiring process, employers will receive notifications when stud
 ## Team Members and Roles
 
 - Dina Omidvar Tehrani (dinaomidvartehrani): [dinaomidvar1377@gmail.com]
-- Nastaran Naseri (Nastaran-Naseri): [naseri.nastaran@hotmail.com]
+- Nastaran Naseri (nastaran-naseri): [naseri.nastaran@hotmail.com]
 - Yugansh Goyal (yugansh77): [Yugansh.bb01@gmail.com]
-- Waleed Ahmed Siddiqui (Waleedahmed05): 
+- Waleed Ahmed Siddiqui (WaleedAhmed05): 
 - Ziran Cao (SimonSaid1996):
-- Sadman Shawmik Himalay ():
+- Sadman Shawmik Himalay (sadmansh):
 
 
 
