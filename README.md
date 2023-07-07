@@ -4,7 +4,8 @@
 
 ## Table of Contents
 - [Description of the Project](#description_of_the_project)
-- [Team Members and Roles](#team_members_and_roles)
+- [Roles](#roles)
+- [Team Members](#team_members)
 - [Project Approach and Technology](#project_approach)
 
 
@@ -21,8 +22,20 @@ Once logged in, students can create or modify their profiles, browse available j
 To streamline the hiring process, employers will receive notifications when students apply for their job openings, while students will be alerted when they are invited for interviews. This feature facilitates effective communication between the parties involved, expediting the overall recruitment procedure.
 
 
-<a name="team_members_and_roles"></a>
-## Team Members and Roles
+<a name="roles"></a>
+## Roles
+
+* Front-end Developer: Specializes in implementing the user interface and user experience (UI/UX) aspects of the platform using JavaScript technology and to create visually appealing and user-friendly web pages.
+  
+* Back-end Developer: Focuses on developing the server-side logic and functionality of the platform with Python and relevant frameworks like Django or Flask to handle tasks such as user authentication, database management, and job post management.
+  
+* Database Administrator: Responsible for designing and managing the database architecture of the platform to ensure data integrity, optimizing database performance, and implementing efficient data retrieval.
+  
+* Quality Assurance: In charge of testing and ensuring the quality and reliability of the platform by developing test plans, executing various testing methodologies, and reporting any identified issues or bugs.
+  
+
+<a name="team_members"></a>
+## Team Members
 
 - Dina Omidvar Tehrani
   - GitHub Username: dinaomidvartehrani
@@ -48,11 +61,7 @@ To streamline the hiring process, employers will receive notifications when stud
   - GitHub Username: sadmansh
   - Email Address: [sadmanh23@gmail.com]
   - Role:
-
-* Front-end Developer: Specializes in implementing the user interface and user experience (UI/UX) aspects of the platform using JavaScript technology and to create visually appealing and user-friendly web pages.
-* Back-end Developer: Focuses on developing the server-side logic and functionality of the platform with Python and relevant frameworks like Django or Flask to handle tasks such as user authentication, database management, and job post management.
-* Database Administrator: Responsible for designing and managing the database architecture of the platform to ensure data integrity, optimizing database performance, and implementing efficient data retrieval.
-* Quality Assurance: In charge of testing and ensuring the quality and reliability of the platform by developing test plans, executing various testing methodologies, and reporting any identified issues or bugs.
+  - 
 
 <a name="project_approach"></a>
 ## Project Approach and Technology
