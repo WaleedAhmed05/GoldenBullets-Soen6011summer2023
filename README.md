@@ -8,6 +8,7 @@
 - [Project Approach and Technology](#project_approach)
 
 
+
 <a name="description_of_the_project"></a>
 ## Description of the Project 
 
@@ -23,8 +24,12 @@ To streamline the hiring process, employers will receive notifications when stud
 <a name="team_members_and_roles"></a>
 ## Team Members and Roles
 
-- Dina Omidvar Tehrani: [dinaomidvar1377@gmail.com]
-- Nastaran Naseri: [naseri.nastaran@hotmail.com]
+- Dina Omidvar Tehrani (dinaomidvartehrani): [dinaomidvar1377@gmail.com]
+- Nastaran Naseri (Nastaran-Naseri): [naseri.nastaran@hotmail.com]
+- Yugansh Goyal (yugansh77): [Yugansh.bb01@gmail.com]
+- Waleed Ahmed Siddiqui (): 
+- Ziran Cao ():
+- Sadman Shawmik Himalay ():
 
 
 
