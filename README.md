@@ -1,5 +1,5 @@
 # SOEN 6011 - Project : Career Services Platform
-## GoldenBullets
+## Group : GoldenBullets
 
 
 ## Table of Contents
