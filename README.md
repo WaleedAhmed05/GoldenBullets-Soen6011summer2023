@@ -4,8 +4,8 @@
 
 ## Table of Contents
 - [Description of the Project](#description_of_the_project)
-- Team Members and Roles
-- Project Approach and Technology
+- [Team Members and Roles](#team_members_and_roles)
+- [Project Approach and Technology](#project_approach)
 
 
 <a name="description_of_the_project"></a>
@@ -18,3 +18,12 @@ This platform offers numerous benefits to both job seekers and employers. Job se
 Once logged in, students can create or modify their profiles, browse available job postings, and submit applications. On the other hand, employers can create and manage job posts, as well as review and evaluate candidate applications. The system ensures the security of login credentials, employing robust measures to prevent unauthorized access.
 
 To streamline the hiring process, employers will receive notifications when students apply for their job openings, while students will be alerted when they are invited for interviews. This feature facilitates effective communication between the parties involved, expediting the overall recruitment procedure.
+
+
+<a name="team_members_and_roles"></a>
+## Team Members and Roles
+
+
+
+<a name="project_approach"></a>
+## Project Approach and Technology
