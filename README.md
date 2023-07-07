@@ -1,1 +1,2 @@
-# GoldenBullets-Soen6011summer2023
+# SOEN 6011 - Project : Career Services Platform
+## GoldenBullets
