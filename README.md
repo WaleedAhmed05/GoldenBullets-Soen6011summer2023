@@ -24,7 +24,9 @@ To streamline the hiring process, employers will receive notifications when stud
 <a name="team_members_and_roles"></a>
 ## Team Members and Roles
 
-- Dina Omidvar Tehrani (dinaomidvartehrani): [dinaomidvar1377@gmail.com]
+- Dina Omidvar Tehrani
+  - GitHub Username: dinaomidvartehrani
+  - Email Address: [dinaomidvar1377@gmail.com]
 - Nastaran Naseri (nastaran-naseri): [naseri.nastaran@hotmail.com]
 - Yugansh Goyal (yugansh77): [Yugansh.bb01@gmail.com]
 - Waleed Ahmed Siddiqui (WaleedAhmed05): 
