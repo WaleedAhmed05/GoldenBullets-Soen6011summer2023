@@ -27,8 +27,8 @@ To streamline the hiring process, employers will receive notifications when stud
 - Dina Omidvar Tehrani (dinaomidvartehrani): [dinaomidvar1377@gmail.com]
 - Nastaran Naseri (Nastaran-Naseri): [naseri.nastaran@hotmail.com]
 - Yugansh Goyal (yugansh77): [Yugansh.bb01@gmail.com]
-- Waleed Ahmed Siddiqui (): 
-- Ziran Cao ():
+- Waleed Ahmed Siddiqui (Waleedahmed05): 
+- Ziran Cao (SimonSaid1996):
 - Sadman Shawmik Himalay ():
 
 
