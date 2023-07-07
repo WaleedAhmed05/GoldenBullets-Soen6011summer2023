@@ -3,11 +3,12 @@
 
 
 ## Table of Contents
-- Description of the Project
+- [Description of the Project](#description_of_the_project)
 - Team Members and Roles
 - Project Approach and Technology
 
 
+<a name="description_of_the_project"></a>
 ## Description of the Project
 
 The aim of this project is to develop a comprehensive career services platform that facilitates job seekers and employers in their respective endeavors. The platform will enable students, who are actively searching for employment, to create and update their professional portfolios, while also providing employers with the ability to post job openings. By utilizing this platform, users can efficiently engage in job hunting from the comfort of their own environment.
