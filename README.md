@@ -3,6 +3,6 @@
 
 
 ## Table of Contents
-- [Description of the Project]
-- [Team Members and Roles]
-- [Project Approach and Technology]
+- Description of the Project
+- Team Members and Roles
+- Project Approach and Technology
