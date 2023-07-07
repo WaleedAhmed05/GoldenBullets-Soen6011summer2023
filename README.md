@@ -52,3 +52,13 @@ To streamline the hiring process, employers will receive notifications when stud
 
 <a name="project_approach"></a>
 ## Project Approach and Technology
+
+The project will follow an agile software development approach to ensure flexibility and adaptability throughout the development process. The team will employ iterative development cycles, allowing for regular feedback and refinement of the platform. This approach will enable the project to respond to changing requirements and incorporate user feedback effectively.
+
+To begin, the team will conduct a thorough analysis of the requirements and design a comprehensive system architecture. This will involve defining the core functionalities of the career services platform, such as user profile management, job posting, application submission, and notification systems. The team will prioritize the development of essential features and progressively add additional functionalities based on user needs and feedback.
+
+The project will also adopt a technology stack that leverages the strengths of JavaScript and Python. JavaScript will be primarily used for the development of the front-end user interface, ensuring an interactive and user-friendly experience. The team will utilize modern JavaScript frameworks, such as React or Angular, to build dynamic and responsive web pages.
+
+On the server-side, Python will serve as the primary programming language. Python's versatility and extensive libraries make it suitable for handling various back-end tasks, including user authentication, database management, and job post management. The team will use frameworks like Django or Flask to streamline the development process and ensure efficient handling of server-side operations.
+
+Overall, this project approach and technology stack will enable the team to deliver a robust, scalable, and user-centric career services platform that meets the requirements of both job seekers and employers while leveraging the power of JavaScript and Python
