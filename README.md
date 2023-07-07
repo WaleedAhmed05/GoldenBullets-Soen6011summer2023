@@ -27,12 +27,27 @@ To streamline the hiring process, employers will receive notifications when stud
 - Dina Omidvar Tehrani
   - GitHub Username: dinaomidvartehrani
   - Email Address: [dinaomidvar1377@gmail.com]
-- Nastaran Naseri (nastaran-naseri): [naseri.nastaran@hotmail.com]
-- Yugansh Goyal (yugansh77): [Yugansh.bb01@gmail.com]
-- Waleed Ahmed Siddiqui (WaleedAhmed05): 
-- Ziran Cao (SimonSaid1996):
-- Sadman Shawmik Himalay (sadmansh):
-
+  - Role: 
+- Nastaran Naseri
+  - GitHub Username: nastaran-naseri
+  - Email Address: [naseri.nastaran@hotmail.com]
+  - Role:
+- Yugansh Goyal
+  - GitHub Username: yugansh77
+  - Email Address: [Yugansh.bb01@gmail.com]
+  - Role:
+- Waleed Ahmed Siddiqui
+  - GitHub Username: WaleedAhmed05
+  - Email Address:
+  - Role:
+- Ziran Cao
+  - GitHub Username: SimonSaid1996
+  - Email Address:
+  - Role:
+- Sadman Shawmik Himalay
+  - GitHub Username: sadmansh
+  - Email Address:
+  - Role:
 
 
 <a name="project_approach"></a>
