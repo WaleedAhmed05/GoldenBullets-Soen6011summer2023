@@ -27,7 +27,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Dina Omidvar Tehrani
   - GitHub Username: dinaomidvartehrani
   - Email Address: [dinaomidvar1377@gmail.com]
-  - Role: 
+  - Role: Specializes in implementing the user interface and user experience (UI/UX) aspects of the platform using JavaScript technology and       to create visually appealing and user-friendly web pages.
 - Nastaran Naseri
   - GitHub Username: nastaran-naseri
   - Email Address: [naseri.nastaran@hotmail.com]
@@ -46,7 +46,7 @@ To streamline the hiring process, employers will receive notifications when stud
   - Role:
 - Sadman Shawmik Himalay
   - GitHub Username: sadmansh
-  - Email Address:
+  - Email Address: [sadmanh23@gmail.com]
   - Role:
 
 
