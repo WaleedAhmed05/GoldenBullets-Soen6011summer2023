@@ -27,7 +27,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Dina Omidvar Tehrani
   - GitHub Username: dinaomidvartehrani
   - Email Address: [dinaomidvar1377@gmail.com]
-  - Role: Specializes in implementing the user interface and user experience (UI/UX) aspects of the platform using JavaScript technology and       to create visually appealing and user-friendly web pages.
+  - Role: 
 - Nastaran Naseri
   - GitHub Username: nastaran-naseri
   - Email Address: [naseri.nastaran@hotmail.com]
@@ -42,13 +42,17 @@ To streamline the hiring process, employers will receive notifications when stud
   - Role:
 - Ziran Cao
   - GitHub Username: SimonSaid1996
-  - Email Address:
+  - Email Address: [Simonsaid1996@gmail.com]
   - Role:
 - Sadman Shawmik Himalay
   - GitHub Username: sadmansh
   - Email Address: [sadmanh23@gmail.com]
   - Role:
 
+* Front-end Developer: Specializes in implementing the user interface and user experience (UI/UX) aspects of the platform using JavaScript technology and to create visually appealing and user-friendly web pages.
+* Back-end Developer: Focuses on developing the server-side logic and functionality of the platform with Python and relevant frameworks like Django or Flask to handle tasks such as user authentication, database management, and job post management.
+* Database Administrator: Responsible for designing and managing the database architecture of the platform to ensure data integrity, optimizing database performance, and implementing efficient data retrieval.
+* Quality Assurance: In charge of testing and ensuring the quality and reliability of the platform by developing test plans, executing various testing methodologies, and reporting any identified issues or bugs.
 
 <a name="project_approach"></a>
 ## Project Approach and Technology
