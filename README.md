@@ -6,3 +6,14 @@
 - Description of the Project
 - Team Members and Roles
 - Project Approach and Technology
+
+
+## Description of the Project
+
+The aim of this project is to develop a comprehensive career services platform that facilitates job seekers and employers in their respective endeavors. The platform will enable students, who are actively searching for employment, to create and update their professional portfolios, while also providing employers with the ability to post job openings. By utilizing this platform, users can efficiently engage in job hunting from the comfort of their own environment.
+
+This platform offers numerous benefits to both job seekers and employers. Job seekers can easily tailor their profiles to meet the demands of the job market, while employers can identify potential candidates who meet their specific requirements. Accessing the platform only requires a PC or a mobile device connected to the internet. Students and employers need to create an account, which they can subsequently access using their email and password credentials.
+
+Once logged in, students can create or modify their profiles, browse available job postings, and submit applications. On the other hand, employers can create and manage job posts, as well as review and evaluate candidate applications. The system ensures the security of login credentials, employing robust measures to prevent unauthorized access.
+
+To streamline the hiring process, employers will receive notifications when students apply for their job openings, while students will be alerted when they are invited for interviews. This feature facilitates effective communication between the parties involved, expediting the overall recruitment procedure.
