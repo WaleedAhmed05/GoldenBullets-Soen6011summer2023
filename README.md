@@ -8,9 +8,9 @@
 - [Project Approach and Technology](#project_approach)
 
 
-
-## Description of the Project 
 <a name="description_of_the_project"></a>
+## Description of the Project 
+
 The aim of this project is to develop a comprehensive career services platform that facilitates job seekers and employers in their respective endeavors. The platform will enable students, who are actively searching for employment, to create and update their professional portfolios, while also providing employers with the ability to post job openings. By utilizing this platform, users can efficiently engage in job hunting from the comfort of their own environment.
 
 This platform offers numerous benefits to both job seekers and employers. Job seekers can easily tailor their profiles to meet the demands of the job market, while employers can identify potential candidates who meet their specific requirements. Accessing the platform only requires a PC or a mobile device connected to the internet. Students and employers need to create an account, which they can subsequently access using their email and password credentials.
