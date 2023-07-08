@@ -66,7 +66,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Sadman Shawmik Himalay
   - GitHub [/Sadmansh](https://github.com/sadmansh)
   - Email Address: [sadmanh23@gmail.com]
-  - Role:
+  - Role: Developer (frontend/backend)
 
 <a name="project_approach"></a>
 ## Project Approach and Technology
