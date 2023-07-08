@@ -38,30 +38,29 @@ To streamline the hiring process, employers will receive notifications when stud
 ## Team Members
 
 - Dina Omidvar Tehrani
-  - GitHub Username: dinaomidvartehrani
+  - GitHub [/Dinaomidvartehrani](https://github.com/dinaomidvartehrani)
   - Email Address: [dinaomidvar1377@gmail.com]
   - Role: 
 - Nastaran Naseri
-  - GitHub Username: nastaran-naseri
+  - GitHub [/Nastaran-naseri](https://github.com/nastaran-naseri)
   - Email Address: [naseri.nastaran@hotmail.com]
   - Role:
 - Yugansh Goyal
-  - GitHub Username: yugansh77
+  - GitHub [/Yugansh77](https://github.com/yugansh77)
   - Email Address: [Yugansh.bb01@gmail.com]
   - Role:
 - Waleed Ahmed Siddiqui
-  - GitHub Username: WaleedAhmed05
-  - Email Address: [waleedclash05@gmail.com]
+  - GitHub [/WaleedAhmed05](https://github.com/WaleedAhmed05)
+  - Email Address: [contact@waleeday.com]
   - Role:
 - Ziran Cao
-  - GitHub Username: SimonSaid1996
+  - GitHub [/SimonSaid1996](https://github.com/SimonSaid1996)
   - Email Address: [Simonsaid1996@gmail.com]
   - Role:
 - Sadman Shawmik Himalay
-  - GitHub Username: sadmansh
+  - GitHub [/Sadmansh](https://github.com/sadmansh)
   - Email Address: [sadmanh23@gmail.com]
   - Role:
-  - 
 
 <a name="project_approach"></a>
 ## Project Approach and Technology
