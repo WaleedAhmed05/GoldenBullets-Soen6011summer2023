@@ -50,7 +50,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Nastaran Naseri
   - GitHub [/Nastaran-naseri](https://github.com/nastaran-naseri)
   - Email Address: [naseri.nastaran@hotmail.com]
-  - Role:
+  - Role: Developer (backend/database)
 - Yugansh Goyal
   - GitHub [/Yugansh77](https://github.com/yugansh77)
   - Email Address: [Yugansh.bb01@gmail.com]
