@@ -46,7 +46,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Dina Omidvar Tehrani
   - GitHub [/Dinaomidvartehrani](https://github.com/dinaomidvartehrani)
   - Email Address: [dinaomidvar1377@gmail.com]
-  - Role: 
+  - Role: Developer (frontend/backend)
 - Nastaran Naseri
   - GitHub [/Nastaran-naseri](https://github.com/nastaran-naseri)
   - Email Address: [naseri.nastaran@hotmail.com]
