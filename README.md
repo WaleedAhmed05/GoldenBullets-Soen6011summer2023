@@ -54,7 +54,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Yugansh Goyal
   - GitHub [/Yugansh77](https://github.com/yugansh77)
   - Email Address: [Yugansh.bb01@gmail.com]
-  - Role:
+  - Role: Developer (backend/testing)
 - Waleed Ahmed Siddiqui
   - GitHub [/WaleedAhmed05](https://github.com/WaleedAhmed05)
   - Email Address: [contact@waleeday.com]
