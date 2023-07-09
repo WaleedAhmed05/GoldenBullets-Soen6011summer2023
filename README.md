@@ -62,7 +62,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Ziran Cao
   - GitHub [/SimonSaid1996](https://github.com/SimonSaid1996)
   - Email Address: [Simonsaid1996@gmail.com]
-  - Role:
+  - Role: Developer (backend/database)
 - Sadman Shawmik Himalay
   - GitHub [/Sadmansh](https://github.com/sadmansh)
   - Email Address: [sadmanh23@gmail.com]
