@@ -58,7 +58,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Waleed Ahmed Siddiqui
   - GitHub [/WaleedAhmed05](https://github.com/WaleedAhmed05)
   - Email Address: [contact@waleeday.com]
-  - Role:
+  - Role: Developer (backend/testing)
 - Ziran Cao
   - GitHub [/SimonSaid1996](https://github.com/SimonSaid1996)
   - Email Address: [Simonsaid1996@gmail.com]
