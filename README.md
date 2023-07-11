@@ -3,18 +3,11 @@
 
 
 ## Table of Contents
-- [GitHub Link](#github_link)
 - [Description of the Project](#description_of_the_project)
+- [Primary Users](#main-users)
 - [Roles](#roles)
 - [Team Members](#team_members)
 - [Project Approach and Technology](#project_approach)
-
-
-
-<a name="github_link"></a>
-## GitHub Link 
-Here is our GitHub repository link : https://github.com/sadmansh/GoldenBullets-Soen6011summer2023.git
-
 
 <a name="description_of_the_project"></a>
 ## Description of the Project 
@@ -27,6 +20,11 @@ Once logged in, students can create or modify their profiles, browse available j
 
 To streamline the hiring process, employers will receive notifications when students apply for their job openings, while students will be alerted when they are invited for interviews. This feature facilitates effective communication between the parties involved, expediting the overall recruitment procedure.
 
+<a name="main-users"></a>
+## Primary Users
+1. Employer – create an account/register, login, browse candidates, add job offers, select candidates that have already applied to an offer for an interview, track the post
+2. Student/Candidate – create an account/register, login, and build/upload a resume; browse and apply for job offers; track applications
+3. Admin – Managing all user profiles, postings and tracking
 
 <a name="roles"></a>
 ## Roles
@@ -54,7 +52,7 @@ To streamline the hiring process, employers will receive notifications when stud
 - Yugansh Goyal
   - GitHub [/Yugansh77](https://github.com/yugansh77)
   - Email Address: [Yugansh.bb01@gmail.com]
-  - Role: Developer (backend/testing)
+  - Role: Developer (backend/database)
 - Waleed Ahmed Siddiqui
   - GitHub [/WaleedAhmed05](https://github.com/WaleedAhmed05)
   - Email Address: [contact@waleeday.com]
