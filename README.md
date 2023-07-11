@@ -13,7 +13,7 @@
 
 <a name="github_link"></a>
 ## GitHub Link 
-Here is our GitHub repository link : 
+Here is our GitHub repository link : https://github.com/sadmansh/GoldenBullets-Soen6011summer2023.git
 
 <a name="description_of_the_project"></a>
 ## Description of the Project 
