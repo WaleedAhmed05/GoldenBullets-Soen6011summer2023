@@ -5,7 +5,7 @@ from extensions import db
 from dotenv import load_dotenv
 import logging
 
-load_dotenv()
+load_dotenv('../.env', override=True)
 
 # Set db connection
 app = Flask(__name__)
