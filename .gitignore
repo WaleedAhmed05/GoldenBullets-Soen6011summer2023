@@ -1,17 +1,17 @@
 #----------------------
 # Next.js / Node.js 
 #----------------------
-/node_modules
-/.next
-/.env*.local
-/.vercel
-/npm-debug.log*
-/yarn-debug.log*
-/yarn-error.log*
-/next.config.js
-/vercel.json
-/out
-/dist
+node_modules/
+.next
+.env*.local
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+next.config.js
+vercel.json
+out
+dist
 
 #----------------------
 # Flask / Python
