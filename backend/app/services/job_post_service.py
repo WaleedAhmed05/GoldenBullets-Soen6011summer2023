@@ -3,7 +3,8 @@ from models.job_post import JobPost
 class JobPostService:
     @staticmethod
     def get_job_posts():
-        return JobPost.query.all()
+        job_posts = JobPost.query.all()
+        return [job_post.serialize() for job_post in job_posts]
     
     @staticmethod
     def get_job_post(id):
