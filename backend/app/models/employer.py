@@ -12,7 +12,6 @@ class Employer(User):
 	
 	id = Column(Integer, ForeignKey('user.id'), primary_key=True)
 	company_id = Column(Integer, nullable=False)
-	company = db.relationship('Company', backref='employer', lazy=True)
 
 	__mapper_args__ = {
 		'polymorphic_identity': 'employer',
