@@ -3,7 +3,7 @@ Model: Company
 """
 
 from extensions import db
-from sqlalchemy import Column, String, func
+from sqlalchemy import Column, String, func, ForeignKey
 from sqlalchemy.types import Integer, DateTime, Text
 
 class Company(db.Model):
@@ -15,6 +15,7 @@ class Company(db.Model):
 	website = Column(String(100), nullable=False)
 	industry = Column(String(100), nullable=False)
 	num_employees = Column(Integer, nullable=False)	
+	created_by = Column(Integer, ForeignKey('employer.id'), primary_key=True)
 	created_at = Column(DateTime, nullable=False, default=func.now())
 	updated_at = Column(DateTime, nullable=False, default=func.now(), onupdate=func.now())
 
