@@ -7,6 +7,6 @@ from controllers.auth import AuthController
 auth_routes = Blueprint('auth_routes', __name__, url_prefix='/auth')
 
 # Google login route
-@auth_routes.route('/login/google')
+@auth_routes.route('/login')
 def google_login():
 	return AuthController.google_login()
