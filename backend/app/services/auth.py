@@ -1,4 +1,4 @@
-from flask import url_for
+from flask import url_for, request
 from flask_dance.contrib.google import google
 from flask_jwt_extended import JWTManager, create_access_token
 from os import getenv
@@ -31,8 +31,8 @@ class AuthService:
 			# Create JWT token
 			access_token = create_access_token(identity=email)
 			# Return url to frontend with JWT token
-			frontend_url = getenv('FRONTEND_URL')
-			return f'{frontend_url}/login?token={access_token}'
+			redirect_url = request.args.get('redirect_url') or getenv('FRONTEND_URL')
+			return f'{redirect_url}/login?token={access_token}'
 		else:
 			return {'error': 'Failed to fetch user info'}
 
