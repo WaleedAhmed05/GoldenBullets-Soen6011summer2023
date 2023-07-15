@@ -5,6 +5,8 @@ from extensions import db
 from dotenv import load_dotenv
 import logging
 
+from routes.job_post_routes import job_post_routes
+
 load_dotenv('../.env', override=True)
 
 # Set db connection
@@ -24,6 +26,7 @@ if getenv('FLASK_ENV') == 'production':
 	logging.basicConfig(filename='app.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
 # @todo: Register routes
+app.register_blueprint(job_post_routes)
 
 if __name__ == '__main__':
 	# Set debug true if in development
