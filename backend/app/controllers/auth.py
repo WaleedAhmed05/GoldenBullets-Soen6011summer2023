@@ -13,3 +13,9 @@ class AuthController:
 				jsonify(response)
 		except Exception as e:
 			return {'error': str(e)}, 500
+		
+	def user_data():
+		try:
+			return AuthService.user_data()
+		except Exception as e:
+			return {'error': str(e)}, 500
