@@ -1,6 +1,6 @@
 from flask import url_for, request
 from flask_dance.contrib.google import google
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity
 from os import getenv
 from extensions import db
 from models.user import User
@@ -32,8 +32,22 @@ class AuthService:
 			access_token = create_access_token(identity=email)
 			# Return url to frontend with JWT token
 			redirect_url = request.args.get('redirect_url') or getenv('FRONTEND_URL')
-			return f'{redirect_url}/login?token={access_token}'
+			return f'{redirect_url}?token={access_token}'
 		else:
 			return {'error': 'Failed to fetch user info'}
+		
+	@staticmethod
+	def user_data():
+		user_email = get_jwt_identity()
+		user = User.query.filter_by(email=user_email).first()
+		if user:
+			return {
+				'email': user.email,
+				'first_name': user.first_name,
+				'last_name': user.last_name,
+				'type': user.type,
+			}
+		else:
+			return {'error': 'User not found'}
 
 		
