@@ -1,0 +1,15 @@
+html {
+	font-family: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+}
+
+#__next {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	main {
+		flex: 1;
+	}
+}
