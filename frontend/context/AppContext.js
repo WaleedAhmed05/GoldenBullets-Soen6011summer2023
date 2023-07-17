@@ -17,8 +17,6 @@ const AppProvider = ({ children }) => {
 			if (isLoggedIn) {
 				// Save access token to local storage
 				localStorage.setItem('_access_token', accessToken)
-				// Redirect to home page
-				router.push('/')
 			}
 		}
 	}, [user])
