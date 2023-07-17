@@ -6,11 +6,11 @@ class AuthController:
 		try:
 			# Return authservice redirect if it is a url
 			response = AuthService.google_login()
-			if response.startswith('http'):
+			# If response is string, redirect. Else return response
+			if isinstance(response, str):
 				return redirect(response)
-			# Return error if it is not a url
 			else:
-				jsonify(response)
+				return response
 		except Exception as e:
 			return {'error': str(e)}, 500
 		
