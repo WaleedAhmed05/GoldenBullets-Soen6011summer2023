@@ -8,6 +8,7 @@
 - [Roles](#roles)
 - [Team Members](#team_members)
 - [Project Approach and Technology](#project_approach)
+- [GitHub Link](#github_link)
 
 <a name="description_of_the_project"></a>
 ## Description of the Project 
@@ -78,3 +79,7 @@ The project will also adopt a technology stack that leverages the strengths of J
 On the server-side, Python will serve as the primary programming language. Python's versatility and extensive libraries make it suitable for handling various back-end tasks, including user authentication, database management, and job post management. The team will use frameworks like Django or Flask to streamline the development process and ensure efficient handling of server-side operations.
 
 Overall, this project approach and technology stack will enable the team to deliver a robust, scalable, and user-centric career services platform that meets the requirements of both job seekers and employers while leveraging the power of JavaScript and Python
+
+<a name="github_link"></a>
+## GitHub Link 
+Here is our GitHub repository link : https://github.com/sadmansh/GoldenBullets-Soen6011summer2023.git
