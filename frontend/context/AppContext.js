@@ -17,6 +17,10 @@ const AppProvider = ({ children }) => {
 			if (isLoggedIn) {
 				// Save access token to local storage
 				localStorage.setItem('_access_token', accessToken)
+				// Redirect to homepage if url contains access token
+				if (urlParams.get('token') || urlParams.get('access_token')) {
+					router.push('/')
+				}
 			}
 		}
 	}, [user])
