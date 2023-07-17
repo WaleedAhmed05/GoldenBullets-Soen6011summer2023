@@ -1,0 +1,61 @@
+@use 'variables' as *;
+
+.jobsPage {
+	padding: 2rem 0;
+}
+
+.jobs {
+	margin-top: 3rem;
+}
+
+.job {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+	padding: 1rem 1.5rem;
+	border-radius: 12px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	color: $black-color;
+
+	a {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.jobTitle {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+		font-weight: 600;
+	}
+
+	.jobCompany {
+		margin-bottom: 1rem;
+	}
+
+	.jobMeta {
+		display: flex;
+		align-items: flex-start;
+
+		li {
+			padding: 0.25rem 0.5rem;
+			margin-right: 1rem;
+			list-style: none;
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			border-radius: 8px;
+			border: 1px solid $black-color;
+		}
+	}
+
+	.jobApply {
+		padding: 0.75rem 1.5rem;
+		border-radius: 8px;
+		border: none;
+		background-color: $accent-color;
+		color: $black-color;
+		font-weight: 600;
+		cursor: pointer;
+	}
+}

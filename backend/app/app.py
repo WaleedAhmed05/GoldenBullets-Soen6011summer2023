@@ -37,12 +37,13 @@ blueprint = make_google_blueprint(
     client_id = getenv('GOOGLE_CLIENT_ID'),
     client_secret = getenv('GOOGLE_CLIENT_SECRET'),
     scope = ['openid', 'https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'],
+    redirect_url = '/auth/login/callback',
 )
-app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Register routes
 app.register_blueprint(job_post_routes)
 app.register_blueprint(auth_routes)
+app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Set up JWT manager
 jwt = JWTManager(app)
