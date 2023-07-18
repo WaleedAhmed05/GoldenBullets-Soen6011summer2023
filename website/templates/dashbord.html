@@ -1,0 +1,238 @@
+{% extends "base.html" %} {% block title %}Create Job Posting{% endblock %}
+{% block content%}
+<title>{{ header }}</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    body {
+      background-color: lightgray;
+    }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    background-color: white;
+    padding: 20px;
+
+  }
+
+  .container > div {
+    flex-basis: 85%;
+  }
+</style>
+<body>
+<div>
+  <h5 align="center">{{ header }}</h5>
+  <hr>
+</div>
+<form method="POST" action="{{ url_for('auth.create_job' if is_new_job else 'auth.edit_job_posting', job_id=joposting.id if not is_new_job else None) }}">
+<ul id="job-postings"></ul>
+  <div class="container">
+    <div class="col-md-6">
+      <fieldset>
+        <legend>Job Details</legend>
+        <label for="title">Job Title:</label><br>
+        <input type="text" id="title" name="title" placeholder="Type here..." value="{{ joposting.title if not is_new_job else '' }}" required><br>
+
+        <label for="job-type">Job Type:</label><br>
+        <select id="job-type" name="job-type">
+          <option value="full-time" {% if joposting.job_type =='full-time' or is_new_job %}selected{% endif %}>Full Time</option>
+          <option value="part-time" {% if joposting.job_type =='part-time' and not is_new_job %}selected{% endif %}>Part Time</option>
+        </select><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" placeholder="Type here..." value="{{ joposting.address if not is_new_job else '' }}" required><br>
+
+        <label for="salary">Salary (Hourly):</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">CAD</span>
+          </div>
+          <input type="text" id="salary" name="salary" pattern="\d+(\.\d{1,2,3})?" value="{{ joposting.salary if not is_new_job else '' }}" required>
+        </div><br>
+
+<!--        <label for="shift-schedule">Shift & Schedule:</label>-->
+<!--        <div class="shift-schedule-container">-->
+<!--          <select id="shift-schedule-select" name="shift-schedule" class="shift-schedule-input" required>-->
+<!--            <option value="">Select an option</option>-->
+<!--            <option value="Night-Shift">Night Shift</option>-->
+<!--            <option value="Day-Shift">Day Shift</option>-->
+<!--            <option value="Monday to Friday">Monday to Friday</option>-->
+<!--            <option value="Morning-Shift">Morning Shift</option>-->
+<!--            <option value="8 hours Shift">8 hours Shift</option>-->
+<!--            <option value="No Weekends">No Weekends</option>-->
+<!--            <option value="On Call">On Call</option>-->
+<!--            <option value="Evening Shift">Evening Shift</option>-->
+<!--            <option value="Weekends as Needed">Weekends as Needed</option>-->
+<!--            <option value="Evening as Needed">Evening as Needed</option>-->
+<!--          </select>-->
+<!--          <button type="button" class="add-shift-schedule">Add</button>-->
+<!--        </div>-->
+<!--        <div class="selected-shift-schedule"></div>-->
+
+<!--        <label for="language">Languages:</label>-->
+<!--        <div class="language-container">-->
+<!--          <select id="language-select" name="language" class="language-input" required>-->
+<!--            <option value="">Select an option</option>-->
+<!--            <option value="English">English</option>-->
+<!--            <option value="French">French</option>-->
+<!--          </select>-->
+<!--          <button type="button" class="add-language">Add</button>-->
+<!--        </div>-->
+<!--        <div class="selected-language"></div>-->
+      </fieldset>
+    </div>
+
+<div class="col-md-6">
+      <fieldset>
+        <legend>Job Description</legend>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" placeholder="Type here..." rows="8" cols="35" required>{{ joposting.description if not is_new_job else '' }}</textarea><br>
+
+        <label for="requirements">Requirements:</label><br>
+        <textarea id="requirements" name="requirements" placeholder="Type here..." rows="4" cols="30" required>{{ joposting.requirements if not is_new_job else '' }}</textarea><br>
+
+      </fieldset>
+    </div>
+</div>
+    <div>
+    {% if header == "Create A Job Posting" %}
+    <button type="submit">Create</button>
+    {% elif header == "Edit Job Posting" %}
+    <button type="submit">Edit</button>
+    {% endif %}
+</div>
+</form>
+</body>
+{% endblock %}
+
+{% block javascript %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="dashbord.js"></script>
+  <script>
+    $(function() {
+      // Example list of job title options
+      const jobTitleOptions = ['Accounts associate','Call centre associate','Call centre supervisor',
+      'Client manager','Complaints manager','Customer relations manager','Customer service agent','Customer service representative',
+      'Relationship manager','Sales adviser','Assistant professor','Childcare assistant','English teacher',
+      'Lecturer','Piano teacher','Private tutor','Professor','Agricultural labourer','Beekeeper',
+      'Ecologist','Farmer','Fisher','Plant scientist','Meatpacker','Horticulturist','Food scientist','Food inspector',
+      'Animal control officer','Animal geneticist','Zoologist','Wildlife biologist','Veterinarian',
+      'Pet walker','Dog groomer','Cat sitter','Breeder','Animal nutritionist','Accountant',
+      'Business development assistant','Business manager','Customer service associate','Financial advisor',
+      'Managing director','Office clerk','Office manager','Project manager','Retail manager','Barber','Beautician',
+      'Beauty therapist','Fashion designer','Hairdresser','Hair stylist','Nail technician','Salon assistant',
+      'Salon manager','Skin care specialist','Artist','Copywriter','Costume designer','Film director','Journalist',
+      'Music producer','Musician','Opera singer','Set designer','Writer','School administrator','School custodian','Teacher',
+      'Chemical engineer','Civil engineer','Environmental engineer','Marine engineer','Mechanical engineer','Petroleum engineer',
+      'Product designer','Product engineer','Service engineer','Technical engineer','Auditor','Banker','Budget analyst',
+      'Credit analyst','Financial advisor','Financial director','Financial manager','Financial officer','Investment banker',
+      'Loan agent','Care aid','Care worker','Dentist','Doctor','Medical assistant','Nurse','Nursing assistant','Optician',
+      'Physician','Physical therapist','Chef','Cleaner','Events organizer','Hotel clerk','Hotel manager','Housekeeper',
+      'Meeting planner','Tour guide','Travel agent','Waiter','Administrative assistant','Benefits manager',
+      'Employee relations manager','Executive recruiter','Human resources assistant','Human resources director',
+      'Human resources manager','Labour relations specialist','Recruiting agent','Staffing assistant','Computer programmer',
+      'Information security analyst','IT manager','Programmer','Service technician','Software developer','Software tester',
+      'UI developer','Web administrator','Web analyst','Business director','Chief executive','Chief operations officer',
+      'Director','Executive','Head of department','Managing director','Supervisor','Team leader','Team manager',
+      'Accounts executive','Content manager','Creative director','Marketer','Marketing assistant','Marketing coordinator',
+      'Marketing director','Marketing manager','Social media assistant','Social media manager','Distributions manager',
+      'Logistics coordinator','Logistics officer','Operations assistant','Operations manager','Product coordinator',
+      'Quality assurance officer','Quality control manager','Supply chain specialist','Warehouse supervisor',
+      'Account coordinator','Cashier','Clerk','Insurance agent','Retail assistant','Sales associate','Sales director',
+      'Sales representative','Store person','Telemarketer'];
+
+      // Initialize autocomplete on the job title input field
+      $("#title").autocomplete({
+        source: jobTitleOptions
+      });
+
+
+<!--      // Track selected shift and schedule options-->
+<!--      let selectedShiftSchedule = [];-->
+
+<!--      // Add shift and schedule option-->
+<!--      $(".add-shift-schedule").click(function() {-->
+<!--        const shiftScheduleSelect = $("#shift-schedule-select");-->
+<!--        const shiftSchedule = shiftScheduleSelect.val().trim();-->
+
+<!--        if (selectedShiftSchedule.includes(shiftSchedule)){-->
+<!--            alert("Option already selected!");-->
+<!--            return;-->
+<!--          }-->
+
+<!--        if (shiftSchedule !== "" && !selectedShiftSchedule.includes(shiftSchedule)) {-->
+<!--          selectedShiftSchedule.push(shiftSchedule);-->
+<!--          $(".selected-shift-schedule").append(`<span class="shift-schedule-label">${shiftSchedule}<button class="remove-shift-schedule">x</button></span>`);-->
+<!--          shiftScheduleSelect.val("");-->
+<!--&lt;!&ndash;          shiftScheduleSelect.find(`option[value="${shiftSchedule}"]`).prop("disabled", true);&ndash;&gt;-->
+<!--        }-->
+<!--      });-->
+
+<!--      // Remove shift and schedule option-->
+<!--      $(document).on("click", ".remove-shift-schedule", function() {-->
+<!--        const shiftScheduleLabel = $(this).parent();-->
+<!--        const shiftSchedule = shiftScheduleLabel.text().trim();-->
+
+<!--        const index = selectedShiftSchedule.indexOf(shiftSchedule);-->
+<!--        if (index > -1) {-->
+<!--          selectedShiftSchedule.splice(index, 1);-->
+<!--        }-->
+
+<!--        shiftScheduleLabel.remove();-->
+<!--&lt;!&ndash;        $("#shift-schedule-select").find(`option[value="${shiftSchedule}"]`).prop("disabled", false);&ndash;&gt;-->
+<!--      });-->
+
+<!--      // Enable previously removed options-->
+<!--      $("#shift-schedule-select").change(function() {-->
+<!--        const selectedOption = $(this).val();-->
+<!--        const optionElement = $(this).find(`option[value="${selectedOption}"]`);-->
+<!--        optionElement.disabled = false;-->
+<!--      });-->
+
+
+<!--      // Track selected shift and schedule options-->
+<!--      let selectedLanguage = [];-->
+
+<!--      // Add shift and schedule option-->
+<!--      $(".add-language").click(function() {-->
+<!--        const languageSelect = $("#language-select");-->
+<!--        const language = languageSelect.val().trim();-->
+
+<!--        if (selectedLanguage.includes(language)){-->
+<!--            alert("Option already selected!");-->
+<!--            return;-->
+<!--          }-->
+
+<!--        if (language !== "" && !selectedLanguage.includes(language)) {-->
+<!--          selectedLanguage.push(language);-->
+<!--          $(".selected-language").append(`<span class="language-label">${language}<button class="remove-language">x</button></span>`);-->
+<!--          languageSelect.val("");-->
+<!--&lt;!&ndash;          languageSelect.find(`option[value="${language}"]`).prop("disabled", true);&ndash;&gt;-->
+<!--        }-->
+<!--      });-->
+
+<!--      // Remove shift and schedule option-->
+<!--      $(document).on("click", ".remove-language", function() {-->
+<!--        const languageLabel = $(this).parent();-->
+<!--        const language = languageLabel.text().trim();-->
+
+<!--        const index = selectedLanguage.indexOf(language);-->
+<!--        if (index > -1) {-->
+<!--          selectedLanguage.splice(index, 1);-->
+<!--        }-->
+
+<!--        languageLabel.remove();-->
+<!--&lt;!&ndash;        $("#language-select").find(`option[value="${language}"]`).prop("disabled", false);&ndash;&gt;-->
+<!--      });-->
+
+<!--      // Enable previously removed options-->
+<!--      $("#language-select").change(function() {-->
+<!--        const selectedOption = $(this).val();-->
+<!--        const optElement = $(this).find(`option[value="${selectedOption}"]`);-->
+<!--        optElement.disabled = false;-->
+<!--      });-->
+    });
+  </script>
+{% endblock %}
+

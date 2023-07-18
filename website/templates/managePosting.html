@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Manage Job Postings{% endblock %}
+
+{% block content %}
+  <h1>Manage Job Postings</h1>
+  {% if jobpostings %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Job Type</th>
+          <th>Address</th>
+          <th>Salary</th>
+          <th>Description</th>
+          <th>Requirements</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for jobposting in jobpostings %}
+          <tr>
+            <td>{{ jobposting.title }}</td>
+            <td>{{ jobposting.job_type }}</td>
+            <td>{{ jobposting.address }}</td>
+            <td>{{ jobposting.salary }}</td>
+            <td>{{ jobposting.description }}</td>
+            <td>{{ jobposting.requirements }}</td>
+            <td>
+              <a href="{{ url_for('auth.view_job_posting', job_id=jobposting.id) }}">View</a> |
+              <a href="{{ url_for('auth.edit_job_posting', job_id=jobposting.id) }}">Edit</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No job postings found.</p>
+  {% endif %}
+{% endblock %}
+

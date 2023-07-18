@@ -1,0 +1,14 @@
+<h1>Job Postings</h1>
+  {% for job_posting in job_postings %}
+    <div>
+      <h3>{{ job_posting.title }}</h3>
+      <p>Job Type: {{ job_posting.job_type }}</p>
+      <p>Address: {{ job_posting.address }}</p>
+      <p>Salary: {{ job_posting.salary }}</p>
+      <p>Description: {{ job_posting.description }}</p>
+      <p>Requirements: {{ job_posting.requirements }}</p>
+        <p>Employer's id: {{ job_posting.employer_id }}</p>
+      <hr>
+    </div>
+  {% endfor %}
+
