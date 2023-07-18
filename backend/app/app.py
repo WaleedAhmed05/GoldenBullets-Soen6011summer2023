@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,session
 from flask_migrate import Migrate
 from os import getenv, environ
 from extensions import db
@@ -8,8 +8,8 @@ from flask_jwt_extended import JWTManager, create_access_token
 import logging
 
 from routes.job_post_routes import job_post_routes
+from routes.profile_edit_routes import profile_edit_routes
 from routes.auth import auth_routes
-
 load_dotenv('../.env', override=True)
 
 # Set up Flask app
@@ -27,7 +27,9 @@ migrate = Migrate(app, db)
 # Create database tables if they don't exist
 with app.app_context():
 	db.create_all()
-	
+
+
+
 # Set logging if in production
 if getenv('FLASK_ENV') == 'production':
 	logging.basicConfig(filename='app.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
@@ -43,6 +45,7 @@ app.register_blueprint(blueprint, url_prefix='/auth/login')
 # Register routes
 app.register_blueprint(job_post_routes)
 app.register_blueprint(auth_routes)
+app.register_blueprint(profile_edit_routes)
 
 # Set up JWT manager
 jwt = JWTManager(app)
