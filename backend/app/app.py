@@ -9,6 +9,7 @@ import logging
 
 from routes.job_post_routes import job_post_routes
 from routes.auth import auth_routes
+from routes.candidate import candidate_routes
 
 load_dotenv('../.env', override=True)
 
@@ -43,6 +44,7 @@ blueprint = make_google_blueprint(
 # Register routes
 app.register_blueprint(job_post_routes)
 app.register_blueprint(auth_routes)
+app.register_blueprint(candidate_routes)
 app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Set up JWT manager

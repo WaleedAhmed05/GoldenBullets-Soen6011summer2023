@@ -22,5 +22,4 @@ def google_login_callback():
 @auth_routes.route('/user')
 @jwt_required()
 def user():
-	print('Request to /user')
 	return AuthController.user_data()

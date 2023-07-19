@@ -71,7 +71,9 @@
 		}
 	}
 
-	.jobApply {
+	.jobApply,
+	.jobEdit {
+		display: block;
 		padding: 1rem 2rem;
 		margin-top: 1rem;
 		width: 100%;
@@ -82,5 +84,7 @@
 		font-weight: 600;
 		font-size: 0.875rem;
 		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
 	}
 }

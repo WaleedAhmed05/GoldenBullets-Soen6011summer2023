@@ -2,9 +2,10 @@ import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import styles from '@/styles/Job.module.scss'
 import { prettifyJobType, addHttps } from '@/utils'
+import { useAppContext } from '@/context/AppContext'
 
 const Job = ({ job }) => {
-	console.log(job)
+	const { user } = useAppContext()
 
 	return (
 		<>
@@ -35,7 +36,12 @@ const Job = ({ job }) => {
 										<Link href={`/companies/${job.company.id}`} className={styles.companyProfile}>Company profile</Link>
 									</div>
 								)}
-								<button type="button" className={styles.jobApply}>Apply for this position</button>
+								{user?.type === 'employer' && user.id === job?.employer_id && (
+									<Link href={`/jobs/${job.id}/edit`} className={styles.jobEdit}>Edit job</Link>
+								)}
+								{user?.type === 'candidate' && (
+									<button type="button" className={styles.jobApply}>Apply for this position</button>
+								)}
 							</div>
 						</div>
 					) : (

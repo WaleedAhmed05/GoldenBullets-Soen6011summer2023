@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}View Job Posting{% endblock %}
+
+{% block content %}
+  <h1>Job Posting Details</h1>
+  <div>
+    <h3>Title: {{ jposting.title }}</h3>
+    <p><strong>Job Type:</strong> {{ jposting.job_type }}</p>
+    <p><strong>Address:</strong> {{ jposting.address }}</p>
+    <p><strong>Salary:</strong> {{ jposting.salary }}</p>
+    <p><strong>Description:</strong> {{ jposting.description }}</p>
+    <p><strong>Requirements:</strong> {{ jposting.requirements }}</p>
+  </div>
+  <a href="{{ url_for('auth.edit_job_posting', job_id=jposting.id) }}">Edit</a>
+{% endblock %}
