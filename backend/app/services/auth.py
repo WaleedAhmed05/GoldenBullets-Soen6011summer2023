@@ -1,14 +1,26 @@
 from flask import url_for, request
 from flask_dance.contrib.google import google
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity
+from flask import session
 from os import getenv
 from extensions import db
 from models.user import User
+from models.candidate import Candidate
 from models.employer import Employer
 
 class AuthService:
 	@staticmethod
 	def google_login():
+		# Get `type` query param
+		user_type = request.args.get('type')
+		# Save user type in session
+		if user_type:
+			session['user_type'] = user_type
+		# Return google login url
+		return url_for('google.login')
+
+	@staticmethod
+	def google_login_callback():
 		try:
 			if not google.authorized:
 				return url_for('google.login')
@@ -26,8 +38,26 @@ class AuthService:
 					name_split = name.split(' ')
 					first_name = name_split[0]
 					last_name = name_split[-1]
-					user = User(email=email, 
-					first_name=first_name, last_name=last_name)
+					# Get user type from session
+					user_type = session.get('user_type') or None
+					if not user_type:
+						return {'error': 'User type not found'}
+					
+					if user_type == 'candidate':
+						user = Candidate(
+							email=email,
+							first_name=first_name,
+							last_name=last_name
+						)
+					elif user_type == 'employer':
+						user = Employer(
+							email=email,
+							first_name=first_name,
+							last_name=last_name
+						)
+					else:
+						return {'error': 'Invalid user type'}
+					# Add user to database
 					db.session.add(user)
 					db.session.commit()
 				# Create JWT token
@@ -38,7 +68,7 @@ class AuthService:
 			else:
 				return {'error': 'Failed to fetch user info'}
 		except Exception as e:
-			return {'error': str(e)}
+			return {'error': e}
 		
 	@staticmethod
 	def user_data():
