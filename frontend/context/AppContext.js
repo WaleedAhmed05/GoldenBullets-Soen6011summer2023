@@ -8,8 +8,6 @@ const AppProvider = ({ children }) => {
 	const [token, setToken] = useState(null)
 	const router = useRouter()
 
-	console.log('user', user)
-
 	useEffect(() => {
 		// Get access token from url param
 		const urlParams = new URLSearchParams(window.location.search)

@@ -22,8 +22,6 @@ const CreateJob = () => {
 		}
 	}, [user])
 
-	console.log('token', token)
-
 	const createJob = async (e) => {
 		e.preventDefault()
 		// Send a POST request to the API to create a new job

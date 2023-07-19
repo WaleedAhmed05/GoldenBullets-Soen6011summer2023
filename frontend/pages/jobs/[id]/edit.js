@@ -17,8 +17,6 @@ const EditJob = ({ data }) => {
 		job_type: data?.job_type || '',
 	})
 
-	console.log('data', data)
-
 	useEffect(() => {
 		if (data) {
 			setJob({
