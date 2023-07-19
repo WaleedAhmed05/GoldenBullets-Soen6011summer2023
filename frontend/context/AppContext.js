@@ -44,6 +44,9 @@ const AppProvider = ({ children }) => {
 			})
 			if (response.ok) {
 				const user = await response.json()
+				if (user?.error) {
+					return false
+				}
 				setUser(user)
 				return true
 			}
