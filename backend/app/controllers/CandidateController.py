@@ -1,7 +1,7 @@
 from services.candidate import CandidateService
 from flask import jsonify
 
-class candidate_controller:
+class CandidateController:
     def update_profile():
         try:
             return CandidateService.update_profile()
