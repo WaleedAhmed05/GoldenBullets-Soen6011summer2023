@@ -5,13 +5,18 @@ const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
+	const [token, setToken] = useState(null)
 	const router = useRouter()
+
+	console.log('user', user)
 
 	useEffect(() => {
 		// Get access token from url param
 		const urlParams = new URLSearchParams(window.location.search)
 		const accessToken = urlParams.get('token') || urlParams.get('access_token') || localStorage.getItem('_access_token')
 		if (accessToken && !user) {
+			// Set access token to state
+			setToken(accessToken)
 			// Get user info from backend with access token
 			const isLoggedIn = getUser(accessToken)
 			if (isLoggedIn) {
@@ -34,7 +39,7 @@ const AppProvider = ({ children }) => {
 
 	const getUser = async (accessToken) => {
 		try {
-			const response = await fetch('api/auth/user', {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/user`, {
 				headers: {
 					Authorization: `Bearer ${accessToken}`
 				}
@@ -50,7 +55,7 @@ const AppProvider = ({ children }) => {
 	}
 
 	return (
-		<AppContext.Provider value={{ user, logout }}>
+		<AppContext.Provider value={{ user, token, logout }}>
 			{children}
 		</AppContext.Provider>
 	)

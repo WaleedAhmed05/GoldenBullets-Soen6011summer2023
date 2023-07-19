@@ -5,8 +5,6 @@ import styles from '@/styles/Jobs.module.scss'
 import { prettifyJobType } from '@/utils'
 
 const Jobs = ({ jobs }) => {
-	console.log(jobs)
-
 	return (
 		<>
 			<Header />

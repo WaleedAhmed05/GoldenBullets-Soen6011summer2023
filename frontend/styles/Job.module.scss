@@ -1,0 +1,90 @@
+@use 'variables' as *;
+
+.jobPage {
+	padding: 2rem 0;
+}
+
+.job {
+	display: flex;
+	align-items: flex-start;
+
+	.jobInfo {
+		flex: 1 0 70%;
+		padding-right: 3rem;
+	}
+
+	.jobTitle {
+		margin-bottom: 2rem;
+	}
+
+	.jobMeta,
+	.companyMeta {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+
+		li {
+			padding: 0.25rem 0.5rem;
+			margin: 0.25rem;
+			margin-right: 1rem;
+			list-style: none;
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			border-radius: 8px;
+			border: 1px solid $black-color;
+		}
+	}
+
+	.jobDescription {
+		margin-top: 2rem;
+		line-height: 1.5;
+	}
+
+	.jobSidebar {
+		flex: 1 0 30%;
+	}
+
+	.companyInfo {
+		padding: 1rem;
+		border: 1px solid $black-color;
+		border-radius: 12px;
+
+		.companyName {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.companyProfile {
+			display: inline-block;
+			margin-top: 1rem;
+			padding: 1rem 2rem;
+			border-radius: 8px;
+			border: none;
+			background-color: $black-color;
+			color: $white-color;
+			text-decoration: none;
+			font-size: 0.875rem;
+		}
+	}
+
+	.jobApply,
+	.jobEdit {
+		display: block;
+		padding: 1rem 2rem;
+		margin-top: 1rem;
+		width: 100%;
+		border-radius: 8px;
+		border: none;
+		background-color: $accent-color;
+		color: $black-color;
+		font-weight: 600;
+		font-size: 0.875rem;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+	}
+}

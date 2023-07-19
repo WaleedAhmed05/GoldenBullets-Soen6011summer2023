@@ -25,12 +25,12 @@ const Login = () => {
 					<div className={styles.loginEmployer}>
 						<h2>Want to hire?</h2>
 						<p>Sign up as an employer to post jobs</p>
-						<Link href={`${process.env.NEXT_PUBLIC_API_URL}/auth/login?type=employer`} className={styles.googleLogin}>Signup/Login as an employer</Link>
+						<Link href={`${process.env.NEXT_PUBLIC_API_URL}/auth/login/google?type=employer`} className={styles.googleLogin}>Signup/Login as an employer</Link>
 					</div>
 					<div className={styles.loginCandidate}>
 						<h2>Looking for a job?</h2>
 						<p>Sign up as a candidate to apply for jobs</p>
-						<Link href={`${process.env.NEXT_PUBLIC_API_URL}/auth/login?type=candidate`} className={styles.googleLogin}>Signup/Login as a candidate</Link>
+						<Link href={`${process.env.NEXT_PUBLIC_API_URL}/auth/login/google?type=candidate`} className={styles.googleLogin}>Signup/Login as a candidate</Link>
 					</div>
 				</div>
 			</main>
