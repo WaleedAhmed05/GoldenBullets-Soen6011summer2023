@@ -9,9 +9,20 @@ const Header = () => {
 		<header className={styles.header}>
 			<Link href='/' className={styles.headerBrand}>Concordia Career Services</Link>
 			<nav className={styles.headerNav}>
-				<Link href='/jobs'>Browse jobs</Link>
 				{user ? (
-					<Link href='/profile'>Profile</Link>
+					<>
+						{user?.type === 'employer' ? (
+							<>
+								<Link href='/jobs/create'>Post a job</Link>
+								<Link href="/jobs/manage">Manage job posts</Link>
+							</>
+						) : (
+							<>
+								<Link href='/jobs'>Browse jobs</Link>
+								<Link href='/jobs/applied'>My applications</Link>
+							</>
+						)}
+					</>
 				) : (
 					<Link href='/login'>Login</Link>
 				)}
