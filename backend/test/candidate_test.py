@@ -6,6 +6,7 @@ Author - WaleedAhmed05
 
 import pytest
 from models.candidate import Candidate
+from models.candidate_skills import CandidateSkill
 
 
 @pytest.fixture
@@ -27,7 +28,7 @@ def candidate_data_valid():
 
 def candidate_data_Invalid():
     # Sample candidate data for testing
-    # Some of the data is missing here.
+    # Some of the data is intentionally missing here.
     return {
         'id': 1,
         'email': 'test@example.com',
@@ -37,6 +38,15 @@ def candidate_data_Invalid():
         'certifications': {'certificate': 'Python Certified'},
         'github_url': 'http://github.com/johndoe',
     }
+
+@pytest.fixture
+def sample_candidate_skill():
+    return CandidateSkill(
+        candidate_id=1,
+        skill_id=1,
+    )
+
+
 
 #if data is valid.
 def test_serialize(candidate_data_valid):
@@ -49,4 +59,13 @@ def test_serialize(candidate_data_valid):
 #     candidate = Candidate(**candidate_data_Invalid)
 #     serialized_data = candidate.serialize()
 #     assert serialized_data != candidate_data_Invalid
+
+
+#test function to test candidates skills data.
+def test_candidate_skill_serialize(sample_candidate_skill):
+    serialized_data = sample_candidate_skill.serialize()
+    assert isinstance(serialized_data, dict)
+    assert 'id' in serialized_data
+    assert 'candidate_id' in serialized_data
+    assert 'skill_id' in serialized_data
 
