@@ -1,6 +1,5 @@
 import pytest
 from models.job_post import JobPost,JobTypeEnum
-from datetime import datetime
 
 @pytest.fixture
 def sample_job_post():
