@@ -53,6 +53,7 @@ const Jobs = () => {
 										</ul>
 									</Link>
 									<Link href={`/jobs/${job?.id}/edit`} className={styles.jobApply}>Edit job</Link>
+									<Link href={`/jobs/${job?.id}/applications`} className={styles.viewApplications}>View applications</Link>
 								</div>
 							))
 						) : (
