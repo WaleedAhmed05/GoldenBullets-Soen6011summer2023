@@ -19,7 +19,7 @@ const Header = () => {
 						) : (
 							<>
 								<Link href='/jobs'>Browse jobs</Link>
-								<Link href='/jobs/applied'>My applications</Link>
+								<Link href='/applications'>My applications</Link>
 							</>
 						)}
 						{/* Notification icon */}
