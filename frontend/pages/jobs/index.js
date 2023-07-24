@@ -5,6 +5,11 @@ import styles from '@/styles/Jobs.module.scss'
 import { prettifyJobType } from '@/utils'
 
 const Jobs = ({ jobs }) => {
+	const { user } = useAppContext()
+	console.log('user', user)
+	// Check if user has already applied for this job
+
+
 	return (
 		<>
 			<Header />
@@ -23,7 +28,7 @@ const Jobs = ({ jobs }) => {
 										<li className={styles.jobMetaItem}>{job.salary}</li>
 									</ul>
 								</Link>
-								<button type="button" className={styles.jobApply}>Apply</button>
+								<Link href={`/jobs/${job.id}/apply`} className={styles.jobApply}>Apply</Link>
 							</div>
 						))}
 					</div>
