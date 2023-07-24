@@ -5,9 +5,9 @@ from controllers.notification import NotificationController
 notification_routes = Blueprint('notification_routes', __name__, url_prefix='/api/notifications')
 
 @jwt_required()
-@notification_routes.route('/<int:user_id>', methods=['GET'])
-def get_notifications(user_id):
+@notification_routes.route('/', methods=['GET'])
+def get_notifications():
 	try:
-		return NotificationController.get_notifications(user_id)
+		return NotificationController.get_notifications()
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
