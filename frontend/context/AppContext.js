@@ -25,6 +25,11 @@ const AppProvider = ({ children }) => {
 					router.push('/')
 				}
 			}
+		} else if (user) {
+			// Redirect to create company profile page if user is an employer and has no company profile
+			if (user?.type === 'employer' && !user?.company_id) {
+				router.push('/profile?create=company')
+			}
 		}
 	}, [user])
 
