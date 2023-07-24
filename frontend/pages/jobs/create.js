@@ -35,6 +35,7 @@ const CreateJob = () => {
 		})
 		const data = await res.json()
 		if (res.ok) {
+			console.log(data)
 			router.push(`/jobs/${data.id}`)
 		}
 	}

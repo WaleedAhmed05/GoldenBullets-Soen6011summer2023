@@ -40,7 +40,7 @@ const Job = ({ job }) => {
 									<Link href={`/jobs/${job.id}/edit`} className={styles.jobEdit}>Edit job</Link>
 								)}
 								{user?.type === 'candidate' && (
-									<button type="button" className={styles.jobApply}>Apply for this position</button>
+									<Link href={`/jobs/${job.id}/apply`} className={styles.jobApply}>Apply for this position</Link>
 								)}
 							</div>
 						</div>
