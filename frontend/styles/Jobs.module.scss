@@ -49,7 +49,8 @@
 		}
 	}
 
-	.jobApply {
+	.jobApply,
+	.viewApplications {
 		padding: 0.75rem 1.5rem;
 		border-radius: 8px;
 		border: none;
@@ -57,5 +58,10 @@
 		color: $black-color;
 		font-weight: 600;
 		cursor: pointer;
+	}
+
+	.jobApply {
+		margin-left: auto;
+		margin-right: 0.5rem;
 	}
 }
