@@ -12,6 +12,7 @@ from routes.auth import auth_routes
 from routes.candidate import candidate_routes
 from routes.browse_candidates_routes import browse_candidates_routes
 from routes.filter_jobs_routes import filter_jobs_routes
+from routes.notification import notification_routes
 
 
 load_dotenv('../.env', override=True)
@@ -50,6 +51,7 @@ app.register_blueprint(auth_routes)
 app.register_blueprint(candidate_routes)
 app.register_blueprint(browse_candidates_routes)
 app.register_blueprint(filter_jobs_routes)
+app.register_blueprint(notification_routes)
 app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Set up JWT manager
