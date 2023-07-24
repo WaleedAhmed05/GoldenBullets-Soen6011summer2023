@@ -30,3 +30,10 @@ class JobApplicationController:
 		except Exception as e:
 			print('error', e)
 			return {'error': str(e)}, 500
+		
+	def get_applications_by_candidate():
+		try:
+			return JobApplicationService.get_applications_by_candidate()
+		except Exception as e:
+			print('error', e)
+			return {'error': str(e)}, 500

@@ -12,7 +12,6 @@ def update_profile():
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
 	
-# @jwt_required()
 @candidate_routes.route('/<int:id>', methods=['GET'])
 def get_profile(id):
 	try:
