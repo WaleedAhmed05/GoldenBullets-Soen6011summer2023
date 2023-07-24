@@ -1,6 +1,7 @@
 from models.job_post import JobPost
 from models.job_application import JobApplication
 from models.user import User
+from models.candidate import Candidate
 from extensions import db
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
@@ -15,12 +16,12 @@ class JobApplicationService:
 			
 			user_email = get_jwt_identity()
 			user = User.query.filter_by(email=user_email).first()
-			if user.type != 'candidate':
-				return {'error': 'Unauthorized'}, 401
-			cv = request.json['cv']
+			# Get candidate by user id
+			candidate = Candidate.query.get(user.id)
+			cv = request.json['cv'] if 'cv' in request.json else None
 			cover_letter = request.json['cover_letter'] if 'cover_letter' in request.json else None
 			# Create job_application instance
-			job_application = JobApplication(cv=cv, cover_letter=cover_letter, job_post_id=id, user_id=user.id)
+			job_application = JobApplication(cv=cv, cover_letter=cover_letter, job_post_id=id, candidate_id=candidate.id)
 			db.session.add(job_application)
 			db.session.commit()
 			return job_application.serialize()

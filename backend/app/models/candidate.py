@@ -19,6 +19,7 @@ class Candidate(User):
 	resume_url = Column(Text)
 	linkedin_url = Column(Text)
 	github_url = Column(Text)
+	job_applications = db.relationship('JobApplication', backref=db.backref('candidate', lazy=True))
 
 	__mapper_args__ = {
 		'polymorphic_identity': 'candidate',
@@ -36,5 +37,6 @@ class Candidate(User):
 			'resume_url': self.resume_url,
 			'linkedin_url': self.linkedin_url,
 			'github_url': self.github_url,
+			'job_applications': [job_application.serialize() for job_application in self.job_applications] if self.job_applications else None,
 		}
 	

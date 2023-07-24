@@ -16,7 +16,7 @@ class JobApplication(db.Model):
     __tablename__ = 'job_application'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, db.ForeignKey('user.id'), nullable=False)
+    candidate_id = Column(Integer, db.ForeignKey('candidate.id'), nullable=False)
     job_post_id = Column(Integer, db.ForeignKey('job_post.id'), nullable=False)
     status = Column(Enum(ApplicationStatusEnum), nullable=False, default=ApplicationStatusEnum.PENDING)
     cv = Column(String(255), nullable=True)
@@ -32,4 +32,5 @@ class JobApplication(db.Model):
             'cv': self.cv,
             'cover_letter': self.cover_letter,
             'job_post': self.job_post.serialize() if self.job_post else None,
+            'candidate': self.candidate.serialize() if self.candidate else None,
         }
