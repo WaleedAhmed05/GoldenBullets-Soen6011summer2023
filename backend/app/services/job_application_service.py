@@ -11,7 +11,6 @@ class JobApplicationService:
 	@jwt_required()
 	def apply_job_post(id, request):
 		try:
-			print('request', request.json)
 			# Verify jwt token
 			if not get_jwt_identity():
 				return {'error': 'Unauthorized'}, 401
@@ -50,7 +49,14 @@ class JobApplicationService:
 				return {'error': 'Unauthorized'}, 401
 			
 			applications = JobApplication.query.filter_by(job_post_id=id).all()
-			return [application.serialize() for application in applications]
+			# For each application, get candidate and attach to application
+			app_with_candidate = []
+			for application in applications:
+				candidate = Candidate.query.get(application.candidate_id)
+				application_dict = application.serialize()
+				application_dict['candidate'] = candidate.serialize()
+				app_with_candidate.append(application_dict)
+			return app_with_candidate
 		except Exception as e:
 			return {'error': str(e)}, 400
 		
@@ -72,4 +78,24 @@ class JobApplicationService:
 			application = JobApplication.query.get(application_id)
 			return application.serialize()
 		except Exception as e:
+			return {'error': str(e)}, 400
+		
+	@staticmethod
+	@jwt_required()
+	def update_job_post_application(application_id, status):
+		try:
+			# Check if user is the owner of the job post
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			job_application = JobApplication.query.get(application_id)
+			job = JobPost.query.get(job_application.job_post_id)
+			if user_email is None or user.id != job.employer_id:
+				return {'error': 'Unauthorized'}, 401
+			
+			# Update job application status
+			job_application.status = status
+			db.session.commit()
+			return {'success': True}
+		except Exception as e:
+			print('error', e)
 			return {'error': str(e)}, 400
