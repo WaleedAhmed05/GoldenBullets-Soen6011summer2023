@@ -24,8 +24,9 @@ const Notifications = () => {
 		})
 		const data = await res.json()
 		if (res.ok) {
+			// Sort notifications by created_at date
+			data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 			setNotifications(data)
-			console.log(data)
 		}
 	}
 
