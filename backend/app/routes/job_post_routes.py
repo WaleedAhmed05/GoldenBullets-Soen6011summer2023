@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required
 from controllers.job_post_controller import JobPostController
+from controllers.job_application_controller import JobApplicationController
 
 job_post_routes = Blueprint('job_post_routes', __name__, url_prefix='/api/jobs')
 
@@ -39,5 +40,29 @@ def create_job_post():
 def update_job_post(id):
 	try:
 		return JobPostController.update_job_post(id, request)
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500
+	
+@jwt_required()
+@job_post_routes.route('/<int:id>/apply', methods=['POST'])
+def apply_job_post(id):
+	try:
+		return JobApplicationController.apply_job_post(id, request)
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500
+	
+@jwt_required()
+@job_post_routes.route('/<int:id>/applications', methods=['GET'])
+def get_job_post_applications(id):
+	try:
+		return JobApplicationController.get_job_post_applications(id)
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500
+	
+@jwt_required()
+@job_post_routes.route('/<int:job_id>/applications/<int:application_id>', methods=['GET'])
+def get_job_post_application(job_id, application_id):
+	try:
+		return JobApplicationController.get_job_post_application(job_id, application_id)
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
