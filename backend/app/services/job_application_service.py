@@ -95,6 +95,9 @@ class JobApplicationService:
 			# Update job application status
 			job_application.status = status
 			db.session.commit()
+
+			# Create notification for candidate
+			NotificationService.create_notification(job_application.candidate_id, 'Job application status', f'Your job application for {job.title} at {job_application.job_post.company.name} has been {status}')
 			return {'success': True}
 		except Exception as e:
 			print('error', e)
