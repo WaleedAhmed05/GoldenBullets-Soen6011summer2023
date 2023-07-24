@@ -2,6 +2,7 @@ from models.job_post import JobPost
 from models.job_application import JobApplication
 from models.user import User
 from models.candidate import Candidate
+from services.notification import NotificationService
 from extensions import db
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 
@@ -25,6 +26,9 @@ class JobApplicationService:
 			job_application = JobApplication(cv=cv, cover_letter=cover_letter, job_post_id=id, candidate_id=candidate.id)
 			db.session.add(job_application)
 			db.session.commit()
+			# Create notification for employer
+			job_post = JobPost.query.get(id)
+			NotificationService.create_notification(job_post.employer_id, 'New job application', f'You have a new job application for {job_post.title}')
 			return job_application.serialize()
 		except Exception as e:
 			print('error', e)
