@@ -19,3 +19,15 @@ export const addHttps = (url) => {
 	}
 	return url
 }
+
+/* Format date to: Jul 24, 2021 at 1:50 PM */
+export const formatDate = (date) => {
+	return new Date(date).toLocaleString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
+		hour12: true,
+	})
+}
