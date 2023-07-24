@@ -36,3 +36,4 @@ class JobPostController:
 			return jsonify(job_post)
 		except Exception as e:
 			return {'error': str(e)}, 500
+
