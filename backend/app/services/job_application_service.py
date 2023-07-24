@@ -10,6 +10,7 @@ class JobApplicationService:
 	@jwt_required()
 	def apply_job_post(id, request):
 		try:
+			print('request', request.json)
 			# Verify jwt token
 			if not get_jwt_identity():
 				return {'error': 'Unauthorized'}, 401
@@ -26,6 +27,7 @@ class JobApplicationService:
 			db.session.commit()
 			return job_application.serialize()
 		except Exception as e:
+			print('error', e)
 			return {'error': str(e)}, 400
 		
 	@staticmethod

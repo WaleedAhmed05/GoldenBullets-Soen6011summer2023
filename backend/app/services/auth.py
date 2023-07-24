@@ -68,7 +68,7 @@ class AuthService:
 			else:
 				return {'error': 'Failed to fetch user info'}
 		except Exception as e:
-			return {'error': e}
+			return {'error': str(e)}
 		
 	@staticmethod
 	def user_data():
@@ -79,15 +79,16 @@ class AuthService:
 				# Get company_id from employer model if user is employer
 				if user.type == 'employer':
 					employer = Employer.query.filter_by(id=user.id).first()
-					company_id = employer.company_id
-				return {
-					'id': user.id,
-					'email': user.email,
-					'first_name': user.first_name,
-					'last_name': user.last_name,
-					'type': user.type,
-					'company_id': company_id if user.type == 'employer' else None
-				}
+					data = employer.serialize()
+					data['id'] = user.id
+					data['type'] = user.type
+					return data
+				elif user.type == 'candidate':
+					candidate = Candidate.query.filter_by(id=user.id).first()
+					data = candidate.serialize()
+					data['id'] = user.id
+					data['type'] = user.type
+					return data
 			else:
 				return {'error': 'User not found'}
 		except Exception as e:
