@@ -1,4 +1,3 @@
-# contoler for get apply form
 from services.job_application_service import JobApplicationService
 from flask import jsonify
 
