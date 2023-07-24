@@ -102,3 +102,27 @@ class JobApplicationService:
 		except Exception as e:
 			print('error', e)
 			return {'error': str(e)}, 400
+		
+	@staticmethod
+	@jwt_required()
+	def get_applications_by_candidate():
+		try:
+			# Get candidate
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			candidate = Candidate.query.get(user.id)
+			if user_email is None or candidate.id is None:
+				return {'error': 'Unauthorized'}, 401
+			
+			applications = JobApplication.query.filter_by(candidate_id=candidate.id).all()
+			# For each application, get job post and attach to application
+			app_with_job_post = []
+			for application in applications:
+				job_post = JobPost.query.get(application.job_post_id)
+				application_dict = application.serialize()
+				application_dict['job_post'] = job_post.serialize()
+				app_with_job_post.append(application_dict)
+			return app_with_job_post
+		except Exception as e:
+			print('error', e)
+			return {'error': str(e)}, 400
