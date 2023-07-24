@@ -1,15 +1,9 @@
 import Link from 'next/link'
-import { useAppContext } from '@/context/AppContext'
 import Header from '@/components/layout/Header'
 import styles from '@/styles/Jobs.module.scss'
 import { prettifyJobType } from '@/utils'
 
 const Jobs = ({ jobs }) => {
-	const { user } = useAppContext()
-	console.log('user', user)
-	// Check if user has already applied for this job
-
-
 	return (
 		<>
 			<Header />
