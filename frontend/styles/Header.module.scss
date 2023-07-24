@@ -10,7 +10,13 @@
 	font-size: 0.875rem;
 	color: $white-color;
 
+	.headerNav {
+		display: flex;
+		align-items: center;
+	}
+
 	a {
+		display: inline-block;
 		margin: 0 1rem;
 		color: $white-color;
 		text-decoration: none;

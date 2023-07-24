@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+.notificationsPage {
+	padding: 2rem 0;
+
+	h1 {
+		margin-bottom: 2rem;
+	}
+
+	h2 {
+		margin-bottom: 1rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-bottom: 1rem;
+		}
+
+		.notificationDisabled {
+			opacity: 0.5;
+			pointer-events: none;
+			cursor: not-allowed;
+		}
+
+		h3 {
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			font-weight: 600;
+		}
+
+		.notificationContent {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
+		.notificationDate {
+			padding: 0.25rem;
+			margin-bottom: 0;
+			margin-right: 0.5rem;
+			border-radius: 6px;
+			border: 1px solid $black-color;
+			font-size: 0.75rem;
+		}
+
+		button {
+			padding: 0.25rem 0.5rem;
+			margin-left: 1rem;
+			background-color: $black-color;
+			border: none;
+			color: $white-color;
+			cursor: pointer;
+		}
+	}
+}
