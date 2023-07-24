@@ -76,6 +76,7 @@ class AuthService:
 			user_email = get_jwt_identity()
 			user = User.query.filter_by(email=user_email).first()
 			if user:
+				# Get company_id from employer model if user is employer
 				if user.type == 'employer':
 					employer = Employer.query.filter_by(id=user.id).first()
 					data = employer.serialize()

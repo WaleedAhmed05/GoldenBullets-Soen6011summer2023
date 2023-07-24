@@ -4,7 +4,7 @@ Model: JobApplication
 
 from extensions import db
 from sqlalchemy import Column, String, func
-from sqlalchemy.types import Integer, Enum
+from sqlalchemy.types import Integer, Enum, DateTime
 import enum
 
 class ApplicationStatusEnum(enum.Enum):
@@ -22,6 +22,7 @@ class JobApplication(db.Model):
     cv = Column(String(255), nullable=True)
     cover_letter = Column(String(255), nullable=True)
     job_post = db.relationship('JobPost', backref=db.backref('job_applications', lazy=True))
+    created_at = Column(DateTime, nullable=False, server_default=func.now())
 
     def serialize(self):
         return {
@@ -32,4 +33,5 @@ class JobApplication(db.Model):
             'cv': self.cv,
             'cover_letter': self.cover_letter,
             'job_post': self.job_post.serialize() if self.job_post else None,
+            'created_at': self.created_at,
         }

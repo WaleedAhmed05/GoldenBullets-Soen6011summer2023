@@ -22,3 +22,11 @@ class JobApplicationController:
 			return application
 		except Exception as e:
 			return {'error': str(e)}, 500
+		
+	def update_job_post_application(application_id, request):
+		try:
+			status = request.get_json()['status']
+			return JobApplicationService.update_job_post_application(application_id, status)
+		except Exception as e:
+			print('error', e)
+			return {'error': str(e)}, 500

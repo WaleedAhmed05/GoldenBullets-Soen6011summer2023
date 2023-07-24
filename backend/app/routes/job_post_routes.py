@@ -66,3 +66,12 @@ def get_job_post_application(job_id, application_id):
 		return JobApplicationController.get_job_post_application(job_id, application_id)
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
+	
+@jwt_required()
+@job_post_routes.route('/applications/<int:application_id>', methods=['PUT'])
+def update_job_post_application(application_id):
+	try:
+		return JobApplicationController.update_job_post_application(application_id, request)
+	except Exception as e:
+		print('error', e)
+		return jsonify({'error': str(e)}), 500
