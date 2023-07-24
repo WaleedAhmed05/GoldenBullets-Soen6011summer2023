@@ -9,7 +9,7 @@ from sqlalchemy.types import Integer, DateTime, Text
 class Company(db.Model):
 	__tablename__ = 'company'
 	
-	id = Column(Integer, primary_key=True)
+	id = Column(Integer, primary_key=True, autoincrement=True)
 	name = Column(String(100), nullable=False)
 	description = Column(Text, nullable=False)
 	website = Column(String(100), nullable=False)
