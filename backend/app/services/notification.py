@@ -16,15 +16,15 @@ class NotificationService:
 		
 	@staticmethod
 	@jwt_required()
-	def get_notifications(user_id):
+	def get_notifications():
 		try:
 			# Verify jwt token
 			user_email = get_jwt_identity()
 			user = User.query.filter_by(email=user_email).first()
-			if not user_email or user is None or user.id != user_id:
+			if not user_email or user is None:
 				return {'error': 'Unauthorized'}, 401
 			
-			notifications = Notification.query.filter_by(user_id=user_id).all()
+			notifications = Notification.query.filter_by(user_id=user.id).all()
 			return [notification.serialize() for notification in notifications]
 		except Exception as e:
 			return {'error': str(e)}, 400
