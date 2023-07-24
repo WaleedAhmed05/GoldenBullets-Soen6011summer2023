@@ -6,7 +6,7 @@ import styles from '@/styles/Jobs.module.scss'
 import { prettifyJobType } from '@/utils'
 
 const Jobs = () => {
-	const { token } = useAppContext()
+	const { user, token } = useAppContext()
 	const [jobs, setJobs] = useState([])
 
 	useEffect(() => {
@@ -38,28 +38,37 @@ const Jobs = () => {
 			<Header />
 			<main className={styles.jobsPage}>
 				<div className="container">
-					<h1>Manage job posts</h1>
-					<div className={styles.jobs}>
-						{jobs?.length  ? (
-							jobs.map(job => (
-								<div key={job.id} className={styles.job}>
-									<Link href={`/jobs/${job.id}`}>
-										<h2 className={styles.jobTitle}>{job.title}</h2>
-										<p className={styles.jobCompany}>{job.company?.name}</p>
-										<ul className={styles.jobMeta}>
-											<li className={styles.jobMetaItem}>{job.location}</li>
-											<li className={styles.jobMetaItem}>{prettifyJobType(job.job_type)}</li>
-											<li className={styles.jobMetaItem}>{job.salary}</li>
-										</ul>
-									</Link>
-									<Link href={`/jobs/${job?.id}/edit`} className={styles.jobApply}>Edit job</Link>
-									<Link href={`/jobs/${job?.id}/applications`} className={styles.viewApplications}>View applications</Link>
-								</div>
-							))
-						) : (
-							<p>You have not posted any jobs yet.</p>
-						)}
-					</div>
+					{!user && (
+						<div className="login">
+							<p>Please login to manage job posts.</p>
+						</div>
+					)}
+					{user ? (
+						<>
+							<h1>Manage job posts</h1>
+							<div className={styles.jobs}>
+								{jobs?.length  ? (
+									jobs.map(job => (
+										<div key={job.id} className={styles.job}>
+											<Link href={`/jobs/${job.id}`}>
+												<h2 className={styles.jobTitle}>{job.title}</h2>
+												<p className={styles.jobCompany}>{job.company?.name}</p>
+												<ul className={styles.jobMeta}>
+													<li className={styles.jobMetaItem}>{job.location}</li>
+													<li className={styles.jobMetaItem}>{prettifyJobType(job.job_type)}</li>
+													<li className={styles.jobMetaItem}>{job.salary}</li>
+												</ul>
+											</Link>
+											<Link href={`/jobs/${job?.id}/edit`} className={styles.jobApply}>Edit job</Link>
+											<Link href={`/jobs/${job?.id}/applications`} className={styles.viewApplications}>View applications</Link>
+										</div>
+									))
+								) : (
+									<p>You have not posted any jobs yet.</p>
+								)}
+							</div>
+						</>
+					) : null}
 				</div>
 			</main>
 		</>

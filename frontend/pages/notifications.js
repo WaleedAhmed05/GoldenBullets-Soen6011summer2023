@@ -49,52 +49,61 @@ const Notifications = () => {
 			<Header />
 			<main className={styles.notificationsPage}>
 				<div className="container">
-					<h1>Notifications</h1>
-					{notifications.length > 0 ? (
-						<>
-							<h2>Unread</h2>
-							<ul className={styles.notificationsList}>
-								{notifications.map(notification => {
-									if (notification.status === 'unread') {
-										return (
-											<li key={notification.id} className={notification.status === 'read' ? styles.notificationDisabled : null}>
-												<h3>
-													<span className={styles.notificationDate}>{formatDate(notification.created_at)}</span>
-													{notification.title}
-												</h3>
-												<div className={styles.notificationContent}>
-													<p>{notification.body}</p>
-													<button type="button" onClick={() => markAsRead(notification.id)}>Mark as read</button>
-												</div>
-											</li>
-										)
-									}
-								})}
-							</ul>
-
-							<h2>Read</h2>
-							<ul className={styles.notificationsList}>
-								{notifications.map(notification => {
-									if (notification.status === 'read') {
-										return (
-											<li key={notification.id} className={notification.status === 'read' ? styles.notificationDisabled : null}>
-												<h3>
-													<span className={styles.notificationDate}>{formatDate(notification.created_at)}</span>
-													{notification.title}
-												</h3>
-												<div className={styles.notificationContent}>
-													<p>{notification.body}</p>
-													<button type="button" onClick={() => markAsRead(notification.id)}>Mark as read</button>
-												</div>
-											</li>
-										)
-									}
-								})}
-							</ul>
-						</>
-					) : (
-						<p>No notifications</p>
+					{!user && (
+						<div className="login">
+							<p>Please login to view your notifications.</p>
+						</div>
 					)}
+					{user ? (
+						<>
+							<h1>Notifications</h1>
+							{notifications.length > 0 ? (
+								<>
+									<h2>Unread</h2>
+									<ul className={styles.notificationsList}>
+										{notifications.map(notification => {
+											if (notification.status === 'unread') {
+												return (
+													<li key={notification.id} className={notification.status === 'read' ? styles.notificationDisabled : null}>
+														<h3>
+															<span className={styles.notificationDate}>{formatDate(notification.created_at)}</span>
+															{notification.title}
+														</h3>
+														<div className={styles.notificationContent}>
+															<p>{notification.body}</p>
+															<button type="button" onClick={() => markAsRead(notification.id)}>Mark as read</button>
+														</div>
+													</li>
+												)
+											}
+										})}
+									</ul>
+
+									<h2>Read</h2>
+									<ul className={styles.notificationsList}>
+										{notifications.map(notification => {
+											if (notification.status === 'read') {
+												return (
+													<li key={notification.id} className={notification.status === 'read' ? styles.notificationDisabled : null}>
+														<h3>
+															<span className={styles.notificationDate}>{formatDate(notification.created_at)}</span>
+															{notification.title}
+														</h3>
+														<div className={styles.notificationContent}>
+															<p>{notification.body}</p>
+															<button type="button" onClick={() => markAsRead(notification.id)}>Mark as read</button>
+														</div>
+													</li>
+												)
+											}
+										})}
+									</ul>
+								</>
+							) : (
+								<p>No notifications</p>
+							)}
+						</>
+					) : null}
 				</div>
 			</main>
 		</>

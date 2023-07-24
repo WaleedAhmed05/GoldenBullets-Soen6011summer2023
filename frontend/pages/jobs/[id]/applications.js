@@ -7,7 +7,7 @@ import styles from '@/styles/Applications.module.scss'
 import { formatDate } from '@/utils'
 
 const Applications = () => {
-	const { token } = useAppContext()
+	const { user, token } = useAppContext()
 	const [applications, setApplications] = useState([])
 	const router = useRouter()
 
@@ -61,38 +61,47 @@ const Applications = () => {
 			<Header />
 			<main className={styles.applicationsPage}>
 				<div className="container">
-					<h1>Applications for job post</h1>
-					<div className={styles.applications}>
-						{applications?.length  ? (
-							applications.map(application => (
-								<div key={application.id} className={styles.application}>
-									<div className={styles.applicationDetails}>
-										<h2 className={styles.applicantName}>
-											{`${application?.candidate?.first_name} ${application?.candidate?.last_name}`}
-											<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
-										</h2>
-										<p>Email: {application?.candidate?.email}</p>
-										<p>Applied on: {formatDate(application?.created_at)}</p>
-										<Link href={application?.cv} target='_blank'>View CV</Link>
-									</div>
-									<div className={styles.applicationButtons}>
-										<button 
-											type="button" 
-											onClick={() => updateStatus(application.id, 'approved')}
-											disabled={application.status === 'approved'}											
-										>Approve</button>
-										<button 
-											type="button" 
-											onClick={() => updateStatus(application.id, 'rejected')}
-											disabled={application.status === 'rejected'}
-										>Reject</button>
-									</div>
-								</div>
-							))
-						) : (
-							<p>There are no applications for this job post yet.</p>
-						)}
-					</div>
+					{!user && (
+						<div className="login">
+							<p>Please login to view applications.</p>
+						</div>
+					)}
+					{user ? (
+						<>
+							<h1>Applications for job post</h1>
+							<div className={styles.applications}>
+								{applications?.length  ? (
+									applications.map(application => (
+										<div key={application.id} className={styles.application}>
+											<div className={styles.applicationDetails}>
+												<h2 className={styles.applicantName}>
+													{`${application?.candidate?.first_name} ${application?.candidate?.last_name}`}
+													<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
+												</h2>
+												<p>Email: {application?.candidate?.email}</p>
+												<p>Applied on: {formatDate(application?.created_at)}</p>
+												<Link href={application?.cv} target='_blank'>View CV</Link>
+											</div>
+											<div className={styles.applicationButtons}>
+												<button 
+													type="button" 
+													onClick={() => updateStatus(application.id, 'approved')}
+													disabled={application.status === 'approved'}											
+												>Approve</button>
+												<button 
+													type="button" 
+													onClick={() => updateStatus(application.id, 'rejected')}
+													disabled={application.status === 'rejected'}
+												>Reject</button>
+											</div>
+										</div>
+									))
+								) : (
+									<p>There are no applications for this job post yet.</p>
+								)}
+							</div>
+						</>
+					) : null}
 				</div>
 			</main>
 		</>

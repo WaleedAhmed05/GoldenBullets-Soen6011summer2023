@@ -6,7 +6,7 @@ import styles from '@/styles/Applications.module.scss'
 import { formatDate } from '@/utils'
 
 const Applications = () => {
-	const { token } = useAppContext()
+	const { user, token } = useAppContext()
 	const [applications, setApplications] = useState([])
 
 	useEffect(() => {
@@ -40,26 +40,35 @@ const Applications = () => {
 			<Header />
 			<main className={styles.applicationsPage}>
 				<div className="container">
-					<h1>My applications</h1>
-					<div className={styles.applications}>
-						{applications?.length  ? (
-							applications.map(application => (
-								<div key={application.id} className={styles.application}>
-									<div className={styles.applicationDetails}>
-										<h2 className={styles.applicantName}>{application.job_post?.title}</h2>
-										<p>Company: {application.job_post?.company?.name}</p>
-										<p>Applied on: {formatDate(application?.created_at)}</p>
-										<Link href={application?.cv} target='_blank'>View submitted CV</Link>
-									</div>
-									<div className={styles.applicationButtons}>
-										<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
-									</div>
-								</div>
-							))
-						) : (
-							<p>You have not applied for any job yet.</p>
-						)}
-					</div>
+					{!user && (
+						<div className="login">
+							<p>Please login to view your applications.</p>
+						</div>
+					)}
+					{user ? (
+						<>
+							<h1>My applications</h1>
+							<div className={styles.applications}>
+								{applications?.length  ? (
+									applications.map(application => (
+										<div key={application.id} className={styles.application}>
+											<div className={styles.applicationDetails}>
+												<h2 className={styles.applicantName}>{application.job_post?.title}</h2>
+												<p>Company: {application.job_post?.company?.name}</p>
+												<p>Applied on: {formatDate(application?.created_at)}</p>
+												<Link href={application?.cv} target='_blank'>View submitted CV</Link>
+											</div>
+											<div className={styles.applicationButtons}>
+												<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
+											</div>
+										</div>
+									))
+								) : (
+									<p>You have not applied for any job yet.</p>
+								)}
+							</div>
+						</>
+					) : null}
 				</div>
 			</main>
 		</>
