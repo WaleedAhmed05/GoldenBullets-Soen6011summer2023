@@ -20,8 +20,9 @@ class Employer(User):
 	def serialize(self):
 		return {
 			'id': self.id,
+			'first_name': self.first_name,
+			'last_name': self.last_name,
 			'email': self.email,
-			'password': self.password,
-			'company_id': self.company.serialize() if self.company else None,
+			'company_id': self.company_id,
 		}
 	
