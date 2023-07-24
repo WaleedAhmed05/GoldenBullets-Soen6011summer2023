@@ -26,11 +26,10 @@ class JobApplication(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
+            'candidate_id': self.candidate_id,
             'job_post_id': self.job_post_id,
             'status': self.status.value if self.status else None,
             'cv': self.cv,
             'cover_letter': self.cover_letter,
             'job_post': self.job_post.serialize() if self.job_post else None,
-            'candidate': self.candidate.serialize() if self.candidate else None,
         }
