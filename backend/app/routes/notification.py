@@ -11,3 +11,11 @@ def get_notifications():
 		return NotificationController.get_notifications()
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
+	
+@jwt_required()
+@notification_routes.route('/<notification_id>', methods=['PUT'])
+def set_notification_as_read(notification_id):
+	try:
+		return NotificationController.set_notification_as_read(notification_id)
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500

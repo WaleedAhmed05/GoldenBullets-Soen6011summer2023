@@ -8,3 +8,9 @@ class NotificationController:
 			return notifications
 		except Exception as e:
 			return {'error': str(e)}, 500
+		
+	def set_notification_as_read(notification_id):
+		try:
+			return (NotificationService.set_notification_as_read(notification_id))
+		except Exception as e:
+			return {'error': str(e)}, 500

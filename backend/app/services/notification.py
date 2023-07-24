@@ -28,3 +28,23 @@ class NotificationService:
 			return [notification.serialize() for notification in notifications]
 		except Exception as e:
 			return {'error': str(e)}, 400
+		
+	@staticmethod
+	@jwt_required()
+	def set_notification_as_read(notification_id):
+		try:
+			# Verify jwt token
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			if not user_email or user is None:
+				return {'error': 'Unauthorized'}, 401
+			
+			notification = Notification.query.filter_by(id=notification_id, user_id=user.id).first()
+			if notification is None:
+				return {'error': 'Notification not found'}, 404
+			# Update notification status to 'read'
+			notification.status = 'read'
+			db.session.commit()
+			return {'success': True}
+		except Exception as e:
+			return {'error': str(e)}, 400
