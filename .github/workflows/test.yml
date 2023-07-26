@@ -2,7 +2,8 @@ name: Test
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '*'
 
 jobs:
   build:
@@ -22,4 +23,5 @@ jobs:
         pip install -r backend/app/requirements.txt
 
     - name: Run tests
-      run: pytest
+      run: |
+        DATABASE_URI=${{ secrets.DATABASE_URI }} pytest backend/app/tests
