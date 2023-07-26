@@ -27,6 +27,11 @@ app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 app.config['JWT_SECRET_KEY'] = getenv('JWT_SECRET_KEY')
 
 # Register extensions
+ctx = app.app_context()
+ctx.push()
+with ctx:
+	pass
+
 db.init_app(app)
 migrate = Migrate(app, db)
 # Create database tables if they don't exist

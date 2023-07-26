@@ -8,7 +8,7 @@ class JobPostService:
 	@staticmethod
 	def get_job_posts():
 		job_posts = JobPost.query.all()
-		return [job_post.serialize() for job_post in job_posts]
+		return [job_post.serialize() for job_post in job_posts] if job_posts else []
 	
 	@staticmethod
 	@jwt_required()
@@ -31,7 +31,8 @@ class JobPostService:
 	
 	@staticmethod
 	def get_job_post(id):
-		return JobPost.query.get(id).serialize()
+		job_post = JobPost.query.get(id)
+		return job_post.serialize() if job_post else {'error': 'Job post not found'}
 	
 	@staticmethod
 	@jwt_required()
