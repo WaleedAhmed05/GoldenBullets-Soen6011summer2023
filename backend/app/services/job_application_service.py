@@ -56,7 +56,7 @@ class JobApplicationService:
 				application_dict = application.serialize()
 				application_dict['candidate'] = candidate.serialize()
 				app_with_candidate.append(application_dict)
-			return app_with_candidate
+			return app_with_candidate if app_with_candidate else []
 		except Exception as e:
 			return {'error': str(e)}, 400
 		
@@ -76,7 +76,7 @@ class JobApplicationService:
 				return {'error': 'Unauthorized'}, 401
 			
 			application = JobApplication.query.get(application_id)
-			return application.serialize()
+			return application.serialize() if application else {'error': 'Job application not found'}
 		except Exception as e:
 			return {'error': str(e)}, 400
 		
@@ -122,7 +122,7 @@ class JobApplicationService:
 				application_dict = application.serialize()
 				application_dict['job_post'] = job_post.serialize()
 				app_with_job_post.append(application_dict)
-			return app_with_job_post
+			return app_with_job_post if app_with_job_post else []
 		except Exception as e:
 			print('error', e)
 			return {'error': str(e)}, 400
