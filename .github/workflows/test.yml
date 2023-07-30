@@ -24,4 +24,4 @@ jobs:
 
     - name: Run tests
       run: |
-        DATABASE_URI="${{ secrets.DATABASE_URI }}" pytest backend/app/tests
+        DATABASE_URI="${{ secrets.DATABASE_URI }}" pytest backend/tests
