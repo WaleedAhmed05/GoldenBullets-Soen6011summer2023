@@ -1,0 +1,194 @@
+<!doctype html>
+<html data-wf-page="6483ed0a69355dcd76f59be9" >
+    <head>
+        <link href="https://uploads-ssl.webflow.com/6438bdb8abc1f524d50a9a37/css/duxica-com.webflow.72da3d752.min.css" rel="stylesheet" type="text/css"/>
+        <link rel='stylesheet' id='swiper-style-css' href='https://www.flowd.co.uk/wp-content/themes/flowd/js/swiper-bundle.min.css?ver=6.2.2' type='text/css' media='all'/>
+        <link rel='stylesheet' id='style2-css' href='https://www.flowd.co.uk/wp-content/themes/flowd/js/style2.css?ver=6.2.2' type='text/css' media='all'/>
+        <link rel='stylesheet' id='range-style-css' href='https://www.flowd.co.uk/wp-content/themes/flowd/js/rangeslider.css?ver=6.2.2' type='text/css' media='all'/>
+        <link rel='stylesheet' id='flowd-style-css' href='https://www.flowd.co.uk/wp-content/themes/flowd/style.css?ver=29-07-23%20030454' type='text/css' media='all'/>
+        <link rel='stylesheet' id='style-css' href='https://www.flowd.co.uk/wp-content/themes/flowd/animation.css?ver=6.2.2' type='text/css' media='all'/>
+        <title>Golden Bullets</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <style>
+          body {
+            font-family: 'Gilroy', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+          @media screen and (min-width: 1000px) and (max-width: 1500px) {
+          #logInHome{
+            margin-right: 40px;
+          }
+        }
+        #font135{
+            font-size: 165%;
+        }
+        #font410{
+            font-size: 410%;
+        }
+        #font350{
+            font-size: 210%;
+        }
+        .hero__title {
+  display: block; 
+  width: 100%;    
+}
+.wrapper {
+  display: flex;
+  flex-direction: column; 
+}
+ .signInBtn{
+    box-sizing: border-box;
+    display: flex;
+     justify-content: center; 
+     align-items: center; 
+     height: max-content;
+     width: max-content;
+
+ }
+
+#signSpan{
+    font-size: 2vw;
+    color: #101011f4;
+    box-sizing: border-box;
+    display: inline-block; 
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+     padding-right: 50px;
+}
+  /* CSS for sliding the v-slides */
+   .v-slides.auto-slide-2 {
+    animation: slide 14s ease-in-out infinite; /* Adjust the time for slide duration */
+    /* transition-delay: 2ms; */
+   } 
+
+   @keyframes slide { 
+    0% {
+      transform: translateY(100%);
+    }
+    60% {
+      transform: translateY(0); /* Adjust -100% to slide horizontally */
+     } 
+     100%{
+        transform: translateY(-100%);
+     }
+   }
+  /* .v-slides__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+    overflow: hidden;
+    position: relative;
+  }
+
+  .v-slides {
+    display: flex;
+    animation: slide 9s infinite;
+  }
+
+  .v-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    /* background-color: #f2f2f2; Optional: Set a background color for the slides */
+  /* } */
+
+  /* .v-slide h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0; /* Remove default margin to ensure proper alignment 
+  } */
+
+  /* CSS for sliding the v-slides */
+  /* @keyframes slide {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    33%, 99% {
+      transform: translateX(-100%); /* Slide to the left to show the next slide 
+    }
+    66% {
+      transform: translateX(-200%); /* Slide to the left to show the last slide 
+    }
+  } */ 
+        </style>
+    </head>
+    <body class="home page-template-default page page-id-2">
+        <header class="black">
+            <div class="wrapper">
+                <a class="header__logo" href='/' style="opacity: 1; visibility: inherit; transform: translate(0px,0px); color: #edf6f9;  font-weight: bolder; padding-top: 20px;" id="font135">Concordia Career Services
+                </a>
+
+                <a class="btn btn-green" id="logInHome" style="margin-top:-25px;" href="#talk">Log In</a>
+
+            </div>
+        </header>
+        <main>
+            <section class="hero" id="main">
+                <div class="hero-video">
+                    <div class="hero-video__wrap">
+                        <video autoplay loop muted poster="https://www.flowd.co.uk/wp-content/themes/flowd/img/video/flowd.jpg" id="bgvid">
+                            <source src="https://www.flowd.co.uk/wp-content/themes/flowd/img/video/flowd.webm" type="video/webm"/>
+                            <source src="https://www.flowd.co.uk/wp-content/themes/flowd/img/video/flowd.mp4" type="video/mp4">
+                            <source src="https://www.flowd.co.uk/wp-content/themes/flowd/img/video/flowd.ogg" type="video/ogg"/>
+                        </video>
+                    </div>
+                </div>
+                <div class="wrapper-bg"></div>
+                <div class="wrapper">
+                    <div class="hero__title" style="padding-top: 15%;">
+                        <h3>
+                           <p id="font135" style="padding-left: 30px;">Want to hire?</p>
+                        </h3>
+                        <h1 id="font410"><a class="btn btn-green signInBtn" href="#talk"><span id="signSpan">Signup/Login as an employer</span></a>		</h1>
+                        <div class="v-slides__wrap">
+                            <div class="v-slides auto-slide-2">
+                                <h2 class="v-slide" id="font350">Post job listings and reach qualified candidates</h2>
+                                <!-- <h2 class="v-slide" id="font350">Manage applications efficiently</h2>
+                                <h2 class="v-slide" id="font350">Build a strong team for your organization</h2>-->
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="hero__title" >
+                        <h3>
+                             <p id="font135" style="padding-left: 30px;">Looking for a job?</p>
+                        </h3>
+                        <h1 id="font410"><a class="btn btn-green signInBtn" href=""><span id="signSpan">Signup/Login as a candidate</span></a>			</h1>
+                        <div class="v-slides__wrap">
+                            <div class="v-slides auto-slide-2">
+                                <h2 class="v-slide" id="font350" style="visibility: visible;">Apply to a wide range of job opportunities</h2>
+                                <!-- <h2 class="v-slide" id="font350" style="visibility: visible;">Showcase your skills and experience</h2>
+                                <h2 class="v-slide" id="font350" style="visibility: visible;">Track your applications and get hired</h2>-->
+                            </div> 
+                        </div>
+                    </div>
+                    <p></p>
+                    <a class="btn btn-green mobile" href="#talk">Log In</a>
+                </div>
+
+            </section>
+
+            <section class="who section">
+                <div class="wrapper" style="padding: 0px;">
+                 <h1 style="height: 0%; margin: 0px; width: 0px;"></h1>
+                </div>
+            </section>
+           </main>
+
+
+            
+<script type='text/javascript' src='https://www.flowd.co.uk/wp-content/themes/flowd/js/lib/gsap/gsap.min.js?ver=6.2.2' id='gsap-script-js'></script>
+<script type='text/javascript' src='https://www.flowd.co.uk/wp-content/themes/flowd/js/lib/gsap/ScrollTrigger.min.js?ver=6.2.2' id='scroll-trigger-js'></script>
+<script type='text/javascript' src='https://www.flowd.co.uk/wp-content/themes/flowd/js/lib/gsap/SplitText.min.js?ver=6.2.2' id='split-text-js'></script>
+<script type='text/javascript' src='https://www.flowd.co.uk/wp-content/themes/flowd/js/animation.js?ver=29-07-23%20030454' id='flowd-animation-js'></script>
+
+</body></html>
+
+
+
