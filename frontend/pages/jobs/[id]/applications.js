@@ -75,12 +75,13 @@ const Applications = () => {
 										<div key={application.id} className={styles.application}>
 											<div className={styles.applicationDetails}>
 												<h2 className={styles.applicantName}>
-													{`${application?.candidate?.first_name} ${application?.candidate?.last_name}`}
+													{`${application.candidate?.first_name} ${application.candidate?.last_name}`}
 													<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
 												</h2>
-												<p>Email: {application?.candidate?.email}</p>
-												<p>Applied on: {formatDate(application?.created_at)}</p>
-												<Link href={application?.cv} target='_blank'>View CV</Link>
+												<p>Email: {application.candidate?.email}</p>
+												<p>Applied on: {formatDate(application.created_at)}</p>
+												<Link href={application.cv} target='_blank'>View CV</Link>
+												<Link href={`/candidate/${application.candidate.id}`}>View candidate profile</Link>
 											</div>
 											<div className={styles.applicationButtons}>
 												<button 
