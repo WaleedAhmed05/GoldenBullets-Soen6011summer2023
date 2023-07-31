@@ -5,9 +5,9 @@ from extensions import db
 from dotenv import load_dotenv
 from flask_dance.contrib.google import make_google_blueprint
 from flask_jwt_extended import JWTManager, create_access_token
-import logging
 from flask_admin import Admin
-from admin import init_admin
+from admin import init_admin, MyAdminIndexView
+import logging
 
 from routes.job_post_routes import job_post_routes
 from routes.auth import auth_routes
@@ -63,7 +63,7 @@ app.register_blueprint(invite_candidate_routes)
 app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Set up Flask Admin
-admin = Admin(app, name='Concordia Career Services', template_mode='bootstrap3')
+admin = Admin(app, name='Concordia Career Services', template_mode='bootstrap3', index_view=MyAdminIndexView())
 init_admin(admin, db)
 
 # Set up JWT manager
