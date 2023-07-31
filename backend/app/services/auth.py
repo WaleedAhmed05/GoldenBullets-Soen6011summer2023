@@ -92,6 +92,7 @@ class AuthService:
 			else:
 				return {'error': 'User not found'}
 		except Exception as e:
+			print('Error', e)
 			return {'error': str(e)}
 
 		
