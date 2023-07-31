@@ -15,6 +15,13 @@ from routes.filter_jobs_routes import filter_jobs_routes
 from routes.notification import notification_routes
 from routes.invite_candidate_routes import invite_candidate_routes
 
+##
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+from models import candidate
+from models import employer
+##
+
 load_dotenv('../.env', override=True)
 
 # Set up Flask app
@@ -25,6 +32,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 app.config['JWT_SECRET_KEY'] = getenv('JWT_SECRET_KEY')
+
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 # Register extensions
 ctx = app.app_context()
@@ -59,6 +68,11 @@ app.register_blueprint(filter_jobs_routes)
 app.register_blueprint(notification_routes)
 app.register_blueprint(invite_candidate_routes)
 app.register_blueprint(blueprint, url_prefix='/auth/login')
+
+admin = Admin(app, name='microblog', template_mode='bootstrap3')
+# Add administrative views here
+admin.add_view(ModelView(candidate, db.session))
+admin.add_view(ModelView(employer, db.session))
 
 # Set up JWT manager
 jwt = JWTManager(app)
