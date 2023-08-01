@@ -6,7 +6,6 @@ from extensions import db
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.types import Integer, Text
 
-
 class Bookmark(db.Model):
 	__tablename__ = 'bookmark'
 
