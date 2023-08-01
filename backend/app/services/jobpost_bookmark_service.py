@@ -4,19 +4,17 @@ from flask import request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from extensions import db
 
-
 class JobpostBookmarkService:
         @staticmethod
-        # @jwt_required()
+        @jwt_required()
         def bookmark_jobpost(request):
-
             try:
-                # # Get user from jwt token
-                # user_email = get_jwt_identity()
-                # user = User.query.filter_by(email=user_email).first()
-                # # Check if user type is candidate
-                # if user.type != 'candidate':
-                #     return {'error': 'Unauthorized'}, 401
+                # Get user from jwt token
+                user_email = get_jwt_identity()
+                user = User.query.filter_by(email=user_email).first()
+                # Check if user type is candidate
+                if user.type != 'candidate':
+                    return {'error': 'Unauthorized'}, 401
                 
                 job_id = request.json['job_id']
                 candidate_id = request.json['candidate_id']
