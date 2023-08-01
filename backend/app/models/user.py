@@ -22,3 +22,12 @@ class User(db.Model):
 		'polymorphic_identity': 'user',
 		'polymorphic_on': type
 	}
+
+	def serialize(self):
+		return {
+			'id': self.id,
+			'first_name': self.first_name,
+			'last_name': self.last_name,
+			'email': self.email,
+			'type': self.type,
+		}

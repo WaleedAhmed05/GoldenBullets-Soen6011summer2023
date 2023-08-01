@@ -8,7 +8,7 @@
 - [Roles](#roles)
 - [Team Members](#team_members)
 - [Project Approach and Technology](#project_approach)
-- [GitHub Link](#github_link)
+- [GitHub Link](#github_link) 
 
 <a name="description_of_the_project"></a>
 ## Description of the Project 
