@@ -28,6 +28,12 @@ const AppProvider = ({ children }) => {
 		}
 	}, [user])
 
+	useEffect(() => {
+		if (user && !user?.company_id) {
+			router.push('/profile?create_company=true')
+		}
+	}, [user])
+
 	const logout = () => {
 		// Remove access token from local storage
 		localStorage.removeItem('_access_token')
