@@ -2,7 +2,12 @@
 
 .notificationsPage {
 	padding: 2rem 0;
-
+	background: url(https://drive.google.com/uc?id=1Q73jDjZJ5sgUL6i5I3uO8dnkv9AWy1oc) no-repeat;
+    background-size: cover;
+	color: white;
+	span{
+		color:#51DDC3;
+	}
 	h1 {
 		margin-bottom: 2rem;
 	}
@@ -16,8 +21,15 @@
 		padding: 0;
 		margin: 0;
 
+
+
+
 		li {
+			background: #e1e1e1;
+			border-radius: 20px;
+		    color: $black-color;
 			margin-bottom: 1rem;
+			padding: 1rem 1.5rem;
 		}
 
 		.notificationDisabled {
@@ -43,17 +55,20 @@
 			margin-bottom: 0;
 			margin-right: 0.5rem;
 			border-radius: 6px;
-			border: 1px solid $black-color;
+			border: 1.5px solid #aeaeae;
 			font-size: 0.75rem;
+			color: #21ab7b;
 		}
 
 		button {
-			padding: 0.25rem 0.5rem;
+			padding: 0.75rem 1.2rem;
 			margin-left: 1rem;
-			background-color: $black-color;
+		    border-radius: 5.56vw;
+		    background-color: #51DDC3;
 			border: none;
-			color: $white-color;
+			color: $black-color;
 			cursor: pointer;
+			font-weight: 700;
 		}
 	}
 }
