@@ -3,15 +3,24 @@
 .profilePage,
 .candidatePage {
 	padding: 2rem 0;
-
+	background: url(https://drive.google.com/uc?id=1Q73jDjZJ5sgUL6i5I3uO8dnkv9AWy1oc) no-repeat;
+    background-size: cover;
+	color: white;
 	h1 {
 		margin-bottom: 2rem;
+		margin-left: 19%;
+	}
+	span{
+		color:#51DDC3;
 	}
 }
 
 .profileForm {
 	margin-top: 2rem;
 	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	font-weight: 500;
 
 	.formGroup {
 		margin-bottom: 1rem;
@@ -19,7 +28,7 @@
 		label {
 			display: block;
 			margin-bottom: 0.25rem;
-			font-weight: 400;
+			font-weight: 600;
 			font-size: 0.75rem;
 			text-transform: uppercase;
 		}
@@ -32,6 +41,8 @@
 			padding: 0.5rem 1rem;
 			border-radius: 4px;
 			border: 1px solid $black-color;
+			background: #e1e1e1;
+			color: $black-color;
 		}
 
 		textarea {
@@ -43,15 +54,16 @@
 	}
 
 	button {
-		padding: 0.75rem 1rem;
+		padding: 0.75rem 1.2rem;
 		border: none;
-		border-radius: 4px;
-		background-color: $black-color;
-		color: $white-color;
+		border-radius: 5.56vw;
+		background-color: #51DDC3;
+		color: $black-color;
 		text-decoration: none;
 		text-transform: uppercase;
 		font-size: 0.75rem;
 		cursor: pointer;
+		font-weight: 700;
 	}
 }
 
