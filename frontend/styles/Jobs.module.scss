@@ -12,7 +12,7 @@ color: white;
 
 .jobs {
 	margin-top: 3rem;
-	background: #e1e1e1;
+	background: inherit;
 	border-radius: 20px;
 }
 
@@ -25,7 +25,7 @@ color: white;
 	border-radius: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	color: $black-color;
-
+	background: #e1e1e1;
 	a {
 		display: block;
 		text-decoration: none;
