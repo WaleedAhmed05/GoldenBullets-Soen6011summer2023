@@ -45,7 +45,7 @@ const Jobs = () => {
 					)}
 					{user ? (
 						<>
-							<h1>Manage job posts</h1>
+							<h1>Manage <span>job posts</span></h1>
 							<div className={styles.jobs}>
 								{jobs?.length  ? (
 									jobs.map(job => (
