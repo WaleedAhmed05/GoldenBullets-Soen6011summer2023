@@ -12,6 +12,7 @@ class ApplicationStatusEnum(enum.Enum):
     PENDING = 'pending'
     APPROVED = 'approved'
     REJECTED = 'rejected'
+    INTERVIEW = 'interview'
 
 class JobApplication(db.Model):
     __tablename__ = 'job_application'
