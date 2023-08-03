@@ -77,6 +77,26 @@ def update_job_post_application(application_id):
 		return jsonify({'error': str(e)}), 500
 
 @jwt_required()
+@job_post_routes.route('/applications/<int:application_id>/interview', methods=['GET'])
+def get_job_interview(application_id):
+	try:
+		return JobApplicationController.get_job_application_interview(application_id, request)
+	except Exception as e:
+		print('error', e)
+		return jsonify({'error': str(e)}), 500
+
+@jwt_required()
+@job_post_routes.route('/applications/<int:application_id>/interview', methods=['POST'])
+def set_job_interview(application_id):
+	try:
+		return JobApplicationController.set_job_application_interview(application_id, request)
+	except Exception as e:
+		print('error', e)
+		return jsonify({'error': str(e)}), 500
+
+
+
+@jwt_required()
 @job_post_routes.route('/applications-by-candidate', methods=['GET'])
 def get_job_post_applications_by_candidate():
 	try:
