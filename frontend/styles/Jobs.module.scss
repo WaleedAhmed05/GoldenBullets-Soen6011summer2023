@@ -2,10 +2,18 @@
 
 .jobsPage {
 	padding: 2rem 0;
+	background: url(https://drive.google.com/uc?id=1Q73jDjZJ5sgUL6i5I3uO8dnkv9AWy1oc) no-repeat;
+    background-size: cover;
+color: white;
+	span{
+		color:#51DDC3;
+	}
 }
 
 .jobs {
 	margin-top: 3rem;
+	background: #e1e1e1;
+	border-radius: 20px;
 }
 
 .job {
