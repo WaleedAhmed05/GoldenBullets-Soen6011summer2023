@@ -68,7 +68,7 @@ const Applications = () => {
 					)}
 					{user ? (
 						<>
-							<h1>Applications for job post</h1>
+							<h1>Applications for <span>job post</span></h1>
 							<div className={styles.applications}>
 								{applications?.length  ? (
 									applications.map(application => (
