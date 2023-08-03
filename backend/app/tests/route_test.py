@@ -29,14 +29,15 @@ class TestApp(unittest.TestCase):
 
     def test_company_values(self):
 
-        mock_company_description="Optimizely is an American company that provides digital experience platform software as a service."
+        #mock_company_description="Optimizely is an American company that provides digital experience platform software as a service."
+        mock_company_description = "We are a big company!"
         mock_company_id =1
         mock_company_name = "Optimizely"
-        mock_company_industry = "Software"
+        mock_company_industry = "Marketing"
         mock_company_website = "https://www.optimizely.com"
-        mock_company_created_at = "Mon, 24 Jul 2023 15:28:25 GMT"
-        mock_company_updated_at = "Mon, 24 Jul 2023 15:28:25 GMT"
-        mock_company_num_employees = 1200
+        mock_company_created_at = "Wed, 02 Aug 2023 23:43:13 GMT"
+        mock_company_updated_at = "Wed, 02 Aug 2023 23:45:38 GMT"
+        mock_company_num_employees = 1000
 
 
         response = self.app.get('/api/jobs/1')

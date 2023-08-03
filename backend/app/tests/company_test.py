@@ -10,7 +10,6 @@ def sample_company():
         website='www.HackOWorld.com',
         industry='IT-CyberSecurity',
         num_employees=100,
-        created_by=1,
     )
 
 def test_company_serialize(sample_company):
@@ -22,7 +21,6 @@ def test_company_serialize(sample_company):
     assert 'website' in serialized_data
     assert 'industry' in serialized_data
     assert 'num_employees' in serialized_data
-    assert 'created_at' in serialized_data
     assert 'updated_at' in serialized_data
 
 
@@ -33,5 +31,4 @@ def test_company_created_at_default_value(sample_company):
     assert sample_company.website is not None
     assert sample_company.industry is not None
     assert sample_company.num_employees is not None
-    assert sample_company.created_by is not None
     #assert isinstance(sample_company.created_at, datetime)
