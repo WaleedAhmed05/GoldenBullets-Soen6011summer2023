@@ -124,7 +124,7 @@ const Profile = () => {
 					)}
 					{user && user.type === 'candidate' ? (
 						<>
-							<h1>My Profile</h1>
+							<h1>My <span>Profile</span></h1>
 							<div className={styles.profile}>
 								<form onSubmit={updateProfile} className={styles.profileForm}>
 									<div className={styles.formGroup}>
