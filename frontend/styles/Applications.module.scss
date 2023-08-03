@@ -2,7 +2,12 @@
 
 .applicationsPage {
 	padding: 2rem 0;
-
+	background: url(https://drive.google.com/uc?id=1Q73jDjZJ5sgUL6i5I3uO8dnkv9AWy1oc) no-repeat;
+    background-size: cover;
+	color: white;
+	span{
+		color:#51DDC3;
+	}
 	h1 {
 		margin-bottom: 2rem;
 	}
@@ -17,7 +22,8 @@
 	border-radius: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	color: $black-color;
-
+	background: #e1e1e1;
+	border-radius: 20px;
 	a {
 		display: block;
 		text-decoration: none;
