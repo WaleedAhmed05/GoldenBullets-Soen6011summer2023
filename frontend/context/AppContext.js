@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
 	}, [user])
 
 	useEffect(() => {
-		if (user && !user?.company_id) {
+		if (user && user.type === 'employee' && !user?.company_id) {
 			router.push('/profile?create_company=true')
 		}
 	}, [user])
