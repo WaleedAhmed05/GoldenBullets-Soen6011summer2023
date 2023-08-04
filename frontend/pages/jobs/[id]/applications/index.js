@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import styles from '@/styles/Applications.module.scss'
-import styles from '@/styles/CreateJob.module.scss'
+// import styles from '@/styles/CreateJob.module.scss'
 import { formatDate } from '@/utils'
 import {log} from "next/dist/server/typescript/utils";
 
