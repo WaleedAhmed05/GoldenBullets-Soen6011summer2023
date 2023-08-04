@@ -144,14 +144,14 @@ const Applications = () => {
 													onClick={() => updateStatus(application.id, 'approved')}
 													disabled={application.status === 'approved'}											
 												>Approve</button>
-												<Link href='/jobs/${id}/applications/interview'>
+												{/*<Link href='/jobs/${id}/applications/interview'>*/}
 													<button
 														type="button"
 														// onClick={() => updateStatus(application.id, 'interview')}
 														onClick={() => handleClick('interview')}
 														disabled={application.status === 'interview'}
 													>Ask For Interview</button>
-												</Link>
+												{/*</Link>*/}
 												<button
 													type="button" 
 													onClick={() => updateStatus(application.id, 'rejected')}
