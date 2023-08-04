@@ -28,8 +28,10 @@ class JobApplicationController:
 	def update_job_post_application(application_id, request):
 		try:
 			status = request.get_json()['status']
+			print('status', status)
 			if status == 'interview':
 				interview = request.get_json()['invite']
+				print('interview', interview)
 				return JobApplicationService.set_job_application_interview(application_id, status, interview)
 			return JobApplicationService.update_job_post_application(application_id, status)
 		except Exception as e:

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import styles from '@/styles/Applications.module.scss'
-// import styles from '@/styles/CreateJob.module.scss'
 import { formatDate } from '@/utils'
 import {log} from "next/dist/server/typescript/utils";
 
@@ -23,6 +22,7 @@ const Applications = () => {
 	})
 
   	function handleClick(s) {
+
 		setStatus(s);
 	  }
 
@@ -70,6 +70,7 @@ const Applications = () => {
 	}
 
 	const updateStatus = async (id, status) => {
+		handleClick(status)
 		try {
 			const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/applications/${id}`, {
 				method: 'PUT',
@@ -101,7 +102,7 @@ const Applications = () => {
 			})
 			const data = await response.json()
 			if (response.ok && data.success) {
-				// fetchApplications()
+				fetchApplications()
 				console.log({ status ,invite})
 				// router.push(`/jobs/${id}/applications/interview`)
 			}
@@ -127,12 +128,15 @@ const Applications = () => {
 							<div className={styles.applications}>
 								{applications?.length  ? (
 									applications.map(application => (
+
 										<div key={application.id} className={styles.application}>
+										<div className={styles.applicationBase}>
 											<div className={styles.applicationDetails}>
 												<h2 className={styles.applicantName}>
 													{`${application.candidate?.first_name} ${application.candidate?.last_name}`}
 													<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
 												</h2>
+												<p>{application.status}</p>
 												<p>Email: {application.candidate?.email}</p>
 												<p>Applied on: {formatDate(application.created_at)}</p>
 												<Link href={application.cv} target='_blank'>View CV</Link>
@@ -158,30 +162,33 @@ const Applications = () => {
 													disabled={application.status === 'rejected'}
 												>Reject</button>
 											</div>
-											{status === 'interview' ? (<>
-							<h1>Create a interview invitaion</h1>
-							<form onSubmit={sendInvite(application.id, 'interview',invite)} className={styles.createJobForm}>
-								<div className={styles.formGroup}>
-									<label htmlFor="start">Date:</label>
-									<input type="date" id="start" name="trip-start"
-										   value={invite.date}
-										   min="2018-01-01" max="2024-12-31"
-										   onChange={(e) => setInvite({ ...invite, date: e.target.value })} />
+										</div>
+											{status === 'interview' ? (<div className={styles.createInterviewForm}>
 
-									<label htmlFor="appt">Time:</label>
-									<input type="time" id="appt" name="appt"
-										   value={invite.time}
-										   min="09:00" max="18:00"
-										   onChange={(e) => setInvite({ ...invite, time: e.target.value })} />
+											<h2>Create a interview invitaion</h2>
+											<form onSubmit={()=>sendInvite(application.id, 'interview',invite)} >
+												<div className={styles.formGroup}>
+													<label htmlFor="start">Date:</label>
+													<input type="date" id="start" name="trip-start"
+														   value={invite.date}
+														   min="2018-01-01" max="2024-12-31"
+														   onChange={(e) => setInvite({ ...invite, date: e.target.value })} />
 
-									<label htmlFor="location">location</label>
-									<input type="text" id="location" name="location" required value={invite.location} onChange={(e) => setInvite({ ...invite, location: e.target.value })} />
-								</div>
-								<div className={styles.formGroup}>
-									<button type="submit" className="btn btn-primary">Invite</button>
-								</div>
-							</form>
-						</>) : null}
+													<label htmlFor="appt">Time:</label>
+													<input type="time" id="appt" name="appt"
+														   value={invite.time}
+														   min="09:00" max="18:00"
+														   onChange={(e) => setInvite({ ...invite, time: e.target.value })} />
+
+													<label htmlFor="location">location</label>
+													<input type="text" id="location" name="location" required value={invite.location} onChange={(e) => setInvite({ ...invite, location: e.target.value })} />
+												</div>
+												<div className={styles.formGroup}>
+													<button type="submit" className="btn btn-primary">Invite</button>
+												</div>
+											</form>
+
+						</div>) : null}
 										</div>
 									))
 								) : (

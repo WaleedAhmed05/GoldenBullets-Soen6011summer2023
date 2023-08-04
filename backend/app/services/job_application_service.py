@@ -53,6 +53,7 @@ class JobApplicationService:
 			# For each application, get candidate and attach to application
 			app_with_candidate = []
 			for application in applications:
+				print(application)
 				candidate = Candidate.query.get(application.candidate_id)
 				application_dict = application.serialize()
 				application_dict['candidate'] = candidate.serialize()
@@ -77,6 +78,7 @@ class JobApplicationService:
 				return {'error': 'Unauthorized'}, 401
 			
 			application = JobApplication.query.get(application_id)
+
 			return application.serialize() if application else {'error': 'Job application not found'}
 		except Exception as e:
 			return {'error': str(e)}, 400
