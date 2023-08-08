@@ -11,3 +11,10 @@ def filter_jobs():
 		print('Error', e)
 		return jsonify({'error': str(e)}), 500
 	
+@job_search_routes.route('/', methods=['GET'])
+def search():
+	try:
+		return JobSearchController.search(request.args)
+	except Exception as e:
+		print('Error', e)
+		return jsonify({'error': str(e)}), 500
