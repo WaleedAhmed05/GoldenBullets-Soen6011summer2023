@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header'
 import styles from '@/styles/Jobs.module.scss'
 import { prettifyJobType } from '@/utils'
 
-const Jobs = ({ data }) => {
+const Jobs = ({ data, industries }) => {
 	const [jobs, setJobs] = useState(data)
 	const [search, setSearch] = useState('')
 	const { user, token } = useAppContext()
@@ -35,9 +35,10 @@ const Jobs = ({ data }) => {
 	}
 
 	// Filter by job type
-	const filterByJobType = async (e) => {
-		const jobType = e.target.value
-		const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/search?filter&job_type=${jobType}`, {
+	const filter = async (e) => {
+		e.preventDefault()
+		const { name, value } = e.target
+		const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/search?filter&${name}=${value}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -65,12 +66,21 @@ const Jobs = ({ data }) => {
 					<div className={styles.filters}>
 						<div className={styles.filter}>
 							<label htmlFor="job_type">Job type</label>
-							<select name="job_type" id="job_type" onChange={(e) => filterByJobType(e)}>
+							<select name="job_type" id="job_type" onChange={(e) => filter(e)}>
 								<option value="">All</option>
 								<option value="full_time">Full time</option>
 								<option value="part_time">Part time</option>
 								<option value="contract">Contract</option>
 								<option value="internship">Internship</option>
+							</select>
+						</div>
+						<div className={styles.filter}>
+							<label htmlFor="industry">Industry</label>
+							<select name="industry" id="industry" onChange={(e) => filter(e)}>
+								<option value="">All</option>
+								{industries?.length ? industries.map(industry => (
+									<option key={industry} value={industry}>{industry}</option>
+								)) : null}
 							</select>
 						</div>
 					</div>
@@ -102,12 +112,19 @@ const Jobs = ({ data }) => {
 }
 
 export async function getServerSideProps() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs`)
-	const jobs = await res.json()
+	// Get all jobs
+	const jobsRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs`)
+	const jobs = await jobsRes.json()
+
+	// Get all industries
+	const industriesRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/search/industries`)
+	const industries = await industriesRes.json()
+	console.log(industries)
 
 	return {
 		props: {
 			data: jobs,
+			industries
 		},
 	}
 }

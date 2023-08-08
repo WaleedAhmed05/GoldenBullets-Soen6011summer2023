@@ -102,7 +102,11 @@ color: white;
 }
 
 .filters {
+	display: flex;
+
 	.filter {
+		margin-right: 2rem;
+
 		label {
 			margin-right: 1rem;
 		}
