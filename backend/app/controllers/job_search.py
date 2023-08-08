@@ -18,3 +18,11 @@ class JobSearchController:
         except Exception as e:
             print('Error', e)
             return {'error': str(e)}, 500
+        
+    def list_all_industries():
+        try:
+            industries = jsonify(JobSearchService.list_all_industries())
+            return industries
+        except Exception as e:
+            print('Error', e)
+            return {'error': str(e)}, 500

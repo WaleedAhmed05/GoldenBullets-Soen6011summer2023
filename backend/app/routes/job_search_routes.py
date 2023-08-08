@@ -18,3 +18,12 @@ def search():
 	except Exception as e:
 		print('Error', e)
 		return jsonify({'error': str(e)}), 500
+	
+@job_search_routes.route('/industries', methods=['GET'])
+def list_all_industries():
+	try:
+		return JobSearchController.list_all_industries()
+	except Exception as e:
+		print('Error', e)
+		return jsonify({'error': str(e)}), 500
+
