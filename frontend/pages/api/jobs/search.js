@@ -7,7 +7,9 @@ export default async (req, res) => {
 		}
 		if (req.method === 'GET') {
 			if (req.query.filter === '') {
-				const response = await fetch(`${process.env.API_URL}/api/jobs/search/filter?job_type=${req.query.job_type}`, {
+				const filterName = Object.keys(req.query)[1]
+				const filterValue = req.query[filterName]
+				const response = await fetch(`${process.env.API_URL}/api/jobs/search/filter?${filterName}=${filterValue}`, {
 					method: 'GET',
 					headers: {
 						Authorization: authHeader,
