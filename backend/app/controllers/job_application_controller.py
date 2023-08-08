@@ -1,6 +1,7 @@
 from services.job_application_service import JobApplicationService
 from flask import jsonify
 
+# Handling job application operations
 class JobApplicationController:
 	def apply_job_post(request, id):
 		try:
@@ -15,14 +16,15 @@ class JobApplicationController:
 			return applications
 		except Exception as e:
 			return {'error': str(e)}, 500
-		
+	# Retrieve a specific job application for a job post based on the provided 'job_id' and 'application_id'	
 	def get_job_post_application(job_id, application_id):
 		try:
 			application = jsonify(JobApplicationService.get_job_post_application(job_id, application_id))
 			return application
 		except Exception as e:
 			return {'error': str(e)}, 500
-		
+
+	# Update the status of a job application based on the provided 'application_id' and 'request' object
 	def update_job_post_application(application_id, request):
 		try:
 			status = request.get_json()['status']
