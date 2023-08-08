@@ -6,19 +6,33 @@ export default async (req, res) => {
 			return res.status(401).json({ message: 'Authorization header missing' })
 		}
 		if (req.method === 'GET') {
-			// Url encode the query string
-			const query = encodeURIComponent(req.query.q)
-			// Send a GET request to the API to search jobs
-			const response = await fetch(`${process.env.API_URL}/api/jobs/search?q=${query}`, {
-				method: 'GET',
-				headers: {
-					Authorization: authHeader,
-					'Content-Type': 'application/json',
-				},
-			})
-			const data = await response.json()
-			if (response.ok) {
-				return res.status(200).json(data)
+			if (req.query.filter === '') {
+				const response = await fetch(`${process.env.API_URL}/api/jobs/search/filter?job_type=${req.query.job_type}`, {
+					method: 'GET',
+					headers: {
+						Authorization: authHeader,
+						'Content-Type': 'application/json',
+					},
+				})
+				const data = await response.json()
+				if (response.ok) {
+					return res.status(200).json(data)
+				}
+			} else {
+				// Url encode the query string
+				const query = encodeURIComponent(req.query.q)
+				// Send a GET request to the API to search jobs
+				const response = await fetch(`${process.env.API_URL}/api/jobs/search?q=${query}`, {
+					method: 'GET',
+					headers: {
+						Authorization: authHeader,
+						'Content-Type': 'application/json',
+					},
+				})
+				const data = await response.json()
+				if (response.ok) {
+					return res.status(200).json(data)
+				}
 			}
 		} else {
 			return res.status(405).json({ message: 'Method not allowed' })

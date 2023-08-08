@@ -34,6 +34,20 @@ const Jobs = ({ data }) => {
 		setJobs(jobs)
 	}
 
+	// Filter by job type
+	const filterByJobType = async (e) => {
+		const jobType = e.target.value
+		const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/search?filter&job_type=${jobType}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`
+			}
+		})
+		const jobs = await res.json()
+		setJobs(jobs)
+	}
+
 	return (
 		<>
 			<Header />
@@ -47,8 +61,22 @@ const Jobs = ({ data }) => {
 						<button type="submit">Search</button>
 					</form>
 
+					{/* Filters */}
+					<div className={styles.filters}>
+						<div className={styles.filter}>
+							<label htmlFor="job_type">Job type</label>
+							<select name="job_type" id="job_type" onChange={(e) => filterByJobType(e)}>
+								<option value="">All</option>
+								<option value="full_time">Full time</option>
+								<option value="part_time">Part time</option>
+								<option value="contract">Contract</option>
+								<option value="internship">Internship</option>
+							</select>
+						</div>
+					</div>
+
 					<div className={styles.jobs}>
-						{jobs?.length && jobs.map(job => (
+						{jobs?.length ? jobs.map(job => (
 							<div key={job.id} className={styles.job}>
 								<Link href={`/jobs/${job.id}`}>
 									<h2 className={styles.jobTitle}>{job.title}</h2>
@@ -65,7 +93,7 @@ const Jobs = ({ data }) => {
 									<Link href={`/jobs/${job.id}/apply`} className={styles.jobApply}>Apply</Link>
 								}
 							</div>
-						))}
+						)) : <p>No jobs found</p>}
 					</div>
 				</div>
 			</main>
