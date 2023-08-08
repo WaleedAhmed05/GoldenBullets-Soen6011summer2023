@@ -14,7 +14,7 @@ from routes.job_post_routes import job_post_routes
 from routes.candidate import candidate_routes
 from routes.company import company_routes
 from routes.browse_candidates_routes import browse_candidates_routes
-from routes.filter_jobs_routes import filter_jobs_routes
+from routes.job_search_routes import job_search_routes
 from routes.notification import notification_routes
 from routes.invite_candidate_routes import invite_candidate_routes
 from routes.candidate_bookmark_routes import candidate_bookmark_routes
@@ -61,7 +61,7 @@ app.register_blueprint(job_post_routes)
 app.register_blueprint(candidate_routes)
 app.register_blueprint(company_routes)
 app.register_blueprint(browse_candidates_routes)
-app.register_blueprint(filter_jobs_routes)
+app.register_blueprint(job_search_routes)
 app.register_blueprint(notification_routes)
 app.register_blueprint(invite_candidate_routes)
 app.register_blueprint(candidate_bookmark_routes)
