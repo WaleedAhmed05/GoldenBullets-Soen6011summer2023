@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { useAppContext } from '@/context/AppContext'
 import Header from '@/components/layout/Header'
@@ -8,7 +9,10 @@ import { prettifyJobType } from '@/utils'
 const Jobs = ({ data, industries }) => {
 	const [jobs, setJobs] = useState(data)
 	const [search, setSearch] = useState('')
+	const [bookmarksFetched, setBookmarksFetched] = useState(false)
+	const [showingSaved, setShowingSaved] = useState(false)
 	const { user, token } = useAppContext()
+	const router = useRouter()
 
 	useEffect(() => {
 		setJobs(data)
@@ -49,12 +53,78 @@ const Jobs = ({ data, industries }) => {
 		setJobs(jobs)
 	}
 
+	// Save/Bookmark a job
+	const saveJob = async (jobId) => {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/${Number(jobId)}/save`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`
+			}
+		})
+		const data = await res.json()
+		if (data?.error) {
+			alert(data.error)
+		} else if (data?.message) {
+			alert('Bookmark removed')
+		} else {
+			alert('Job bookmarked')
+		}
+		// Reload page
+		router.reload()
+	}
+
+	useEffect(() => {
+		if (user && jobs?.length) {
+			// Get job bookmarks
+			const savedJobs = async () => {
+				const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/saved`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${token}`
+					}
+				})
+				const bookmarks = await res.json()
+				if (bookmarks?.length) {
+					const updatedJobs = jobs.map(job => {
+						if (bookmarks.some(bookmark => bookmark.job_id === job.id)) {
+							return { ...job, bookmarked: true }
+						}
+						return job
+					})
+					setJobs(updatedJobs)
+					setBookmarksFetched(true)
+				}
+			}
+			if (!bookmarksFetched) {
+				savedJobs()
+			}
+		}
+	}, [user, jobs])
+
+	const displaySavedJobs = async () => {
+		// Set jobs to only where bookmarked is true
+		if (showingSaved) {
+			// Reload page
+			router.reload()
+			return
+		} else {
+			setJobs(jobs.filter(job => job.bookmarked))
+			setShowingSaved(true)
+		}
+	}
+
 	return (
 		<>
 			<Header />
 			<main className={styles.jobsPage}>
 				<div className="container">
-					<h1>Browse all jobs</h1>
+					<div className={styles.title}>
+						<h1>Browse all jobs</h1>
+						{user && !showingSaved ? <button type="button" onClick={displaySavedJobs}>View saved jobs</button> : null}
+						{user && showingSaved ? <button type="button" onClick={displaySavedJobs}>View all jobs</button> : null}
+					</div>
 
 					{/* Search */}
 					<form className={styles.search} onSubmit={searchJobs}>
@@ -97,11 +167,20 @@ const Jobs = ({ data, industries }) => {
 										<li className={styles.jobMetaItem}>{job.salary}</li>
 									</ul>
 								</Link>
-								{hasApplied(job.id) ?
-									<span style={{ color: '#000' }}>Applied</span>
-									:
-									<Link href={`/jobs/${job.id}/apply`} className={styles.jobApply}>Apply</Link>
-								}
+								<div className={styles.jobActions}>
+									{/* Apply to job */}
+									{hasApplied(job.id) ?
+										<span style={{ color: '#000' }}>Applied</span>
+										:
+										<Link href={`/jobs/${job.id}/apply`} className={styles.jobApply}>Apply</Link>
+									}
+									{/* Save job */}
+									{job.bookmarked ?
+										<button type="button" className={styles.saveJob} onClick={() => saveJob(job.id)}>Unsave</button>
+										:
+										<button type="button" className={styles.saveJob} onClick={() => saveJob(job.id)}>Save</button>
+									}
+								</div>
 							</div>
 						)) : <p>No jobs found</p>}
 					</div>
@@ -119,7 +198,6 @@ export async function getServerSideProps() {
 	// Get all industries
 	const industriesRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/search/industries`)
 	const industries = await industriesRes.json()
-	console.log(industries)
 
 	return {
 		props: {

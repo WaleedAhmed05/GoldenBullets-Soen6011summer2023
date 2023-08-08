@@ -10,6 +10,21 @@ color: white;
 	}
 }
 
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	button {
+		color: $white-color;
+		background-color: transparent;
+		border: none;
+		font-size: 1rem;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+
 .jobs {
 	margin-top: 3rem;
 	background: inherit;
@@ -57,8 +72,18 @@ color: white;
 		}
 	}
 
+	.jobActions {
+		display: flex;
+		align-items: center;
+
+		span {
+			margin-right: 0.5rem;
+		}
+	}
+
 	.jobApply,
-	.viewApplications {
+	.viewApplications,
+	.saveJob {
 		padding: 0.75rem 1.5rem;
 		border-radius: 8px;
 		border: none;
@@ -66,6 +91,11 @@ color: white;
 		color: $black-color;
 		font-weight: 600;
 		cursor: pointer;
+	}
+
+	.saveJob { 
+		background-color: transparent;
+		border: 1px solid $black-color;
 	}
 
 	.jobApply {
