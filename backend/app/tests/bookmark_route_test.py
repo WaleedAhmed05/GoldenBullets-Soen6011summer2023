@@ -1,5 +1,5 @@
 """
-Test script for browse candidates.
+Test script for bookmark candidates.
 version 1.0
 Author - WaleedAhmed05
 """
