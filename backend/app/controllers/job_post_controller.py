@@ -8,14 +8,15 @@ class JobPostController:
 			return job_posts
 		except Exception as e:
 			return {'error': str(e)}, 500
-		
+
+	# Retrieve all job posts by a specific employer
 	def get_employer_job_posts():
 		try:
 			job_posts = jsonify(JobPostService.get_employer_job_posts())
 			return job_posts
 		except Exception as e:
 			return {'error': str(e)}, 500
-		
+	# Retrieve a specific job post based on the provided 'id'	
 	def get_job_post(id):
 		try:
 			job_post = jsonify(JobPostService.get_job_post(id))
