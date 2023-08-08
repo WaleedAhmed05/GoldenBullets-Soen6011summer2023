@@ -1,6 +1,7 @@
 from flask import redirect, jsonify
 from services.auth import AuthService
 
+# Defining the AuthController class responsible for handling authentication operations
 class AuthController:
 	def google_login():
 		try:
