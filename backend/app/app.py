@@ -16,10 +16,11 @@ from routes.company import company_routes
 from routes.browse_candidates_routes import browse_candidates_routes
 from routes.job_search_routes import job_search_routes
 from routes.notification import notification_routes
-from routes.invite_candidate_routes import invite_candidate_routes
+from routes.invite_candidates_routes import invite_candidate_routes
 from routes.candidate_bookmark_routes import candidate_bookmark_routes
 from routes.jobpost_bookmark_routes import jobpost_bookmark_routes
 from routes.job_preferences_routes import candidate_jobpreferences_routes
+from routes.alert_candidate_routes import alert_candidates_routes
 
 load_dotenv('../.env', override=True)
 
@@ -68,6 +69,7 @@ app.register_blueprint(invite_candidate_routes)
 app.register_blueprint(candidate_bookmark_routes)
 app.register_blueprint(jobpost_bookmark_routes)
 app.register_blueprint(candidate_jobpreferences_routes)
+app.register_blueprint(alert_candidates_routes)
 app.register_blueprint(blueprint, url_prefix='/auth/login')
 
 # Set up Flask Admin
