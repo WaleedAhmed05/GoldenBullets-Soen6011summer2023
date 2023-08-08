@@ -24,3 +24,16 @@ class JobSearchService:
         except Exception as e:
             print('Error', e)
             return {'error': str(e)}, 500
+        
+    @staticmethod
+    def search(args):
+        try:
+            # Trim whitespace from search query and convert to lowercase
+            search_query = request.args.get('q').strip().lower()
+            # Search by title, location, job_type, description, or company name. Company is a relationship
+            search_results = JobPost.query.filter(JobPost.title.ilike(f'%{search_query}%') | JobPost.location.ilike(f'%{search_query}%') | JobPost.job_type.ilike(f'%{search_query}%') | JobPost.description.ilike(f'%{search_query}%') | JobPost.company.has(name=search_query)).all()
+            return [search_result.serialize() for search_result in search_results]
+        except Exception as e:
+            print('Error', e)
+            return {'error': str(e)}, 500
+        

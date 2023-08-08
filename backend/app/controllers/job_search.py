@@ -10,3 +10,11 @@ class JobSearchController:
         except Exception as e:
             print('Error', e)
             return {'error': str(e)}, 500
+        
+    def search(args):
+        try:
+            search_results = jsonify(JobSearchService.search(args))
+            return search_results
+        except Exception as e:
+            print('Error', e)
+            return {'error': str(e)}, 500
