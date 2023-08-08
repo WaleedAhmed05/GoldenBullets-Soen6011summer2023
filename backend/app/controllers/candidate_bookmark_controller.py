@@ -1,6 +1,7 @@
 from services.candidate_bookmark_service import CandidateBookmarkService
 from flask import jsonify
 
+# Handling candidate bookmarking operations
 class CandidateBookmarkController:
     def bookmark_candidate(request):
         try:
