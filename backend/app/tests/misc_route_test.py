@@ -15,14 +15,14 @@ class MiscRouteTests(unittest.TestCase):
 
 # Tests for Filter Jobs Routes #
 
-    @patch('controllers.filter_jobs_controller.FilterJobsController.get_filtered_jobs')
+    @patch('controllers.job_search.JobSearchController.get_filtered_jobs')
     def test_get_filtered_jobs(self, mock_get_filtered_jobs):
-        # Mock the FilterJobsController.get_filtered_jobs() method
+        # Mock the JobSearchController.get_filtered_jobs() method
         mock_get_filtered_jobs.return_value = [{'title': 'Job1 - Guardian of the Repositories'},
                                                {'title': 'Job2 - Prince of Bugs'}]
 
         # Simulate a GET request to the route
-        response = self.app.get('/api/filter_jobs/')
+        response = self.app.get('/api/jobs/search/filter')
 
         self.assertEqual(response.status_code, 200)
 
@@ -30,13 +30,13 @@ class MiscRouteTests(unittest.TestCase):
         self.assertEqual(response.json, [{'title': 'Job1 - Guardian of the Repositories'},
                                          {'title': 'Job2 - Prince of Bugs'}])
 
-    @patch('controllers.filter_jobs_controller.FilterJobsController.get_filtered_jobs')
+    @patch('controllers.job_search.JobSearchController.get_filtered_jobs')
     def test_get_filtered_jobs_error(self, mock_get_filtered_jobs):
-        # Mock the FilterJobsController.get_filtered_jobs() method
+        # Mock the JobSearchController.get_filtered_jobs() method
         mock_get_filtered_jobs.side_effect = Exception('Some error occurred')
 
         # Simulate a GET request to the route
-        response = self.app.get('/api/filter_jobs/')
+        response = self.app.get('/api/jobs/search/filter')
 
         self.assertEqual(response.status_code, 500)
 
