@@ -73,3 +73,30 @@ color: white;
 		margin-right: 0.5rem;
 	}
 }
+
+.search {
+	display: flex;
+	margin: 2rem 0;
+	padding: 1rem 1.5rem;
+	border-radius: 12px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	color: $black-color;
+	background: #fff;
+
+	input {
+		flex: 1;
+		padding: 1rem;
+		border: none;
+		font-size: 1.125rem;
+	}
+
+	button {
+		padding: 0.75rem 1.5rem;
+		border-radius: 8px;
+		border: none;
+		background-color: $accent-color;
+		color: $black-color;
+		font-weight: 600;
+		cursor: pointer;
+	}
+}
