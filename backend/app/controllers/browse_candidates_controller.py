@@ -1,6 +1,7 @@
 from services.candidates_browse_service import BrowseCandidatesService
 from flask import jsonify
 
+# Handling candidate browsing operations
 class BrowseCandidatesController:
 
     def get_all_candidates():
