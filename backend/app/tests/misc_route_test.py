@@ -6,12 +6,17 @@ Author - WaleedAhmed05
 import unittest
 from unittest.mock import patch
 import app
+from flask_jwt_extended import create_access_token
 
 class MiscRouteTests(unittest.TestCase):
 
     def setUp(self):
         app.app.testing = True
         self.app = app.app.test_client()
+
+    def get_auth_token(self):
+        # Generate a mock JWT token for testing
+        return create_access_token(identity="test_user")
 
 # Tests for job search  #
 
@@ -99,6 +104,66 @@ class MiscRouteTests(unittest.TestCase):
         # Check if the response status code is 500 (Internal Server Error)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json, {'error': 'Invitation error'})
+
+
+    # Candidate options tests"
+
+    @patch('controllers.candidate.CandidateController.update_profile')
+    def test_update_profile(self, mock_update_profile):
+        # Mock the CandidateController.update_profile() method
+        mock_update_profile.return_value = {'message': 'Profile updated successfully'}
+
+        # Simulate a PUT request with some JSON data (request data)
+        # attached JWT token in header of request.
+        response = self.app.put('/api/candidate/123',
+                                json={'name': 'John Doe', 'skills': ['Python', 'JavaScript']},
+                                headers={'Authorization': f'Bearer {self.get_auth_token()}'})
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {'message': 'Profile updated successfully'})
+
+    @patch('controllers.candidate.CandidateController.get_profile')
+    def test_get_profile(self, mock_get_profile):
+        # Mock the CandidateController.get_profile() method
+        mock_get_profile.return_value = {'name': 'John Doe', 'skills': ['Python', 'JavaScript']}
+
+        # Simulate a GET request to the route
+        response = self.app.get('/api/candidate/123',
+                                headers={'Authorization': f'Bearer {self.get_auth_token()}'})
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {'name': 'John Doe', 'skills': ['Python', 'JavaScript']})
+
+    @patch('controllers.candidate.CandidateController.update_profile')
+    def test_update_profile_error(self, mock_update_profile):
+        # Mock the CandidateController.update_profile() method
+        mock_update_profile.side_effect = Exception('Update error')
+
+        # Simulate a PUT request with some JSON data (request data)
+        response = self.app.put('/api/candidate/123',
+                                json={'name': 'John Doe', 'skills': ['Python', 'JavaScript']},
+                                headers={'Authorization': f'Bearer {self.get_auth_token()}'})
+
+        # Check if the response status code is 500 (Internal Server Error)
+        self.assertEqual(response.status_code, 500)
+
+        # Check if the response JSON contains the error message
+        self.assertEqual(response.json, {'error': 'Update error'})
+
+    @patch('controllers.candidate.CandidateController.get_profile')
+    def test_get_profile_error(self, mock_get_profile):
+        # Mock the CandidateController.get_profile() method
+        mock_get_profile.side_effect = Exception('Get error')
+
+        # Simulate a GET request to the route
+        response = self.app.get('/api/candidate/123',
+                                headers={'Authorization': f'Bearer {self.get_auth_token()}'})
+
+        # Check if the response status code is 500 (Internal Server Error)
+        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.json, {'error': 'Get error'})
 
 if __name__ == '__main__':
     unittest.main()
