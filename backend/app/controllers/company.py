@@ -1,6 +1,7 @@
 from services.company import CompanyService
 from flask import jsonify
 
+# Handling company profile operations
 class CompanyController:
 	def get_profile(user_id):
 		try:

@@ -7,10 +7,12 @@ from sqlalchemy import Column, String, func
 from sqlalchemy.types import Integer, Enum, DateTime
 import enum
 
+# Defining an enumeration for application status
 class ApplicationStatusEnum(enum.Enum):
     PENDING = 'pending'
     APPROVED = 'approved'
     REJECTED = 'rejected'
+    INTERVIEW = 'interview'
 
 class JobApplication(db.Model):
     __tablename__ = 'job_application'

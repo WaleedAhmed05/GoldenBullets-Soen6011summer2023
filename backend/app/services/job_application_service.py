@@ -1,4 +1,5 @@
 from models.job_post import JobPost
+from models.interview import Invite
 from models.job_application import JobApplication
 from models.user import User
 from models.candidate import Candidate
@@ -76,6 +77,7 @@ class JobApplicationService:
 				return {'error': 'Unauthorized'}, 401
 			
 			application = JobApplication.query.get(application_id)
+
 			return application.serialize() if application else {'error': 'Job application not found'}
 		except Exception as e:
 			return {'error': str(e)}, 400
@@ -97,7 +99,37 @@ class JobApplicationService:
 			db.session.commit()
 
 			# Create notification for candidate
-			NotificationService.create_notification(job_application.candidate_id, 'Job application status', f'Your job application for {job.title} at {job_application.job_post.company.name} has been {status}')
+			if status == 'interview':
+				NotificationService.create_notification(job_application.candidate_id, 'Interview invitation', f'You have been invited for an interview for {job.title} at {job_application.job_post.company.name}')
+			else:
+				NotificationService.create_notification(job_application.candidate_id, 'Job application status', f'Your job application for {job.title} at {job_application.job_post.company.name} has been {status}')
+
+			return {'success': True}
+		except Exception as e:
+			print('error', e)
+			return {'error': str(e)}, 400
+
+	@staticmethod
+	@jwt_required()
+	def set_job_application_interview(application_id, status,invite):
+		try:
+			# Check if user is the owner of the job post
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			job_application = JobApplication.query.get(application_id)
+			job = JobPost.query.get(job_application.job_post_id)
+			if user_email is None or user.id != job.employer_id:
+				return {'error': 'Unauthorized'}, 401
+
+			# Update job application status
+			job_application.status = status
+			db.session.commit()
+
+			# Create notification for candidate
+			NotificationService.create_notification(job_application.candidate_id, 'Interview invitation',
+														f'You have been invited for an interview for {job.title} at {job_application.job_post.company.name}\n'
+														f'please make sure to be in {invite["location"]} at {invite["date"]} at {invite["time"]}')
+
 			return {'success': True}
 		except Exception as e:
 			print('error', e)
@@ -125,4 +157,25 @@ class JobApplicationService:
 			return app_with_job_post if app_with_job_post else []
 		except Exception as e:
 			print('error', e)
+			return {'error': str(e)}, 400
+
+	@staticmethod
+	@jwt_required()
+	def get_job_application_interview(id):
+		try:
+			# Verify jwt token
+			if not get_jwt_identity():
+				return {'error': 'Unauthorized'}, 401
+
+			# Check if user is the owner of the job post
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			interviews = Invite.query.get(id)
+			# For each application, get candidate and attach to application
+			app_with_candidate = []
+			for interview in interviews:
+				application_dict = interview.serialize()
+				app_with_candidate.append(application_dict)
+			return app_with_candidate if app_with_candidate else []
+		except Exception as e:
 			return {'error': str(e)}, 400
