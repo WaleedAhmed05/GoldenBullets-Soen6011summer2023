@@ -9,10 +9,16 @@ import app
 from flask_jwt_extended import create_access_token
 import json
 
+from dotenv import load_dotenv
+from os import getenv
+
+load_dotenv('../.env', override=True)
+
 class MiscRouteTests(unittest.TestCase):
 
     def setUp(self):
         app.app.testing = True
+        app.app.config['JWT_SECRET_KEY'] = getenv('JWT_SECRET_KEY')
         self.app = app.app.test_client()
 
     def get_auth_token(self):
