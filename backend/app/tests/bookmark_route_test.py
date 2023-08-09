@@ -20,7 +20,7 @@ class TestCandidateBookmarkRoutes(unittest.TestCase):
         mock_bookmark_candidate.return_value = {'message': 'Candidate bookmarked successfully'}
 
         # Simulating post request.
-        response = self.app.post('/api/bookmark_candidate/', json={'candidate_id': 101})
+        response = self.app.post('/api/bookmark_candidate/101', json={'candidate_id': 101})
 
         # if status code is 200 (OK), it means it's passed.
         self.assertEqual(response.status_code, 200)
@@ -34,7 +34,7 @@ class TestCandidateBookmarkRoutes(unittest.TestCase):
         mock_bookmark_candidate.side_effect = Exception('Some error occurred')
 
         # Simulate a POST request with some JSON data (request data)
-        response = self.app.post('/api/bookmark_candidate/', json={'candidate_id': 102})
+        response = self.app.post('/api/bookmark_candidate/102', json={'candidate_id': 102})
 
         # Check if the response status code is 500 (Internal Server Error)
         self.assertEqual(response.status_code, 500)

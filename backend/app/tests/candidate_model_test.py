@@ -21,7 +21,8 @@ def candidate_instance():
         resume_url='http://JohnTheDon.com/resume',
         linkedin_url='http://JohnTheDon.com/linkedin',
         github_url='http://JohnTheDon.com/github',
-        job_applications=[]
+        job_applications=[],
+        skills=[],
     )
 
 # Test the serialize method
@@ -38,6 +39,7 @@ def test_candidate_serialize(candidate_instance):
         'linkedin_url': 'http://JohnTheDon.com/linkedin',
         'github_url': 'http://JohnTheDon.com/github',
         'job_applications': None,
+        'skills': None,
     }
 
     result = candidate_instance.serialize()
