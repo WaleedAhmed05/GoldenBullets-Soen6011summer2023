@@ -7,6 +7,7 @@ from extensions import db
 from models.user import User
 from models.candidate import Candidate
 from models.employer import Employer
+from models.job_post import JobPost
 
 class AuthService:
 	@staticmethod
@@ -82,6 +83,9 @@ class AuthService:
 					data = employer.serialize()
 					data['id'] = user.id
 					data['type'] = user.type
+					# Add job posts to data
+					job_posts = JobPost.query.filter_by(employer_id=user.id).all()
+					data['job_posts'] = [job_post.serialize() for job_post in job_posts]
 					return data
 				elif user.type == 'candidate':
 					candidate = Candidate.query.filter_by(id=user.id).first()

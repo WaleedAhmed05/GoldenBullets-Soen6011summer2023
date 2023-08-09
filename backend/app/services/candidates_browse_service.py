@@ -1,6 +1,6 @@
 from models.candidate import Candidate
-from models.candidate_skills import CandidateSkill
 from models.skill import Skill
+from models.candidate_skills import CandidateSkill
 
 class BrowseCandidatesService:
 
@@ -11,5 +11,5 @@ class BrowseCandidatesService:
 
     @staticmethod
     def get_all_candidateskills():
-        all_candidateskills = CandidateSkill.query.all()
-        return [all_candidateskill.serialize() for all_candidateskill in all_candidateskills]
+        skills = Skill.query.all()
+        return [skill.serialize() for skill in skills]

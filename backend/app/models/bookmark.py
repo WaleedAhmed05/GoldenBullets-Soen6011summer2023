@@ -12,7 +12,7 @@ class Bookmark(db.Model):
 	id = Column(Integer, primary_key=True)
 	employer_id = Column(Integer, db.ForeignKey('employer.id'), nullable=True)
 	candidate_id = Column(Integer, ForeignKey('candidate.id'), nullable=False)
-	job_id = Column(Integer, ForeignKey('job_post.id'), nullable=False)
+	job_id = Column(Integer, ForeignKey('job_post.id'), nullable=True)
 
 	def serialize(self):
 		return {
