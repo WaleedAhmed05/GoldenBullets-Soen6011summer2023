@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 import app
 from flask_jwt_extended import create_access_token
+import json
 
 class MiscRouteTests(unittest.TestCase):
 
@@ -79,7 +80,7 @@ class MiscRouteTests(unittest.TestCase):
         # Check if the response JSON contains the error message
         self.assertEqual(response.json, {'error': 'Filter error'})
 
-# Tests for inviting candidate component #
+# Tests for candidate options || invitations #
 
     @patch('controllers.invite_candidate_controller.InviteCandidateController.invite_candidate')
     def test_invite_candidate(self, mock_invite_candidate):
@@ -104,9 +105,6 @@ class MiscRouteTests(unittest.TestCase):
         # Check if the response status code is 500 (Internal Server Error)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json, {'error': 'Invitation error'})
-
-
-    # Candidate options tests"
 
     @patch('controllers.candidate.CandidateController.update_profile')
     def test_update_profile(self, mock_update_profile):
@@ -164,6 +162,42 @@ class MiscRouteTests(unittest.TestCase):
         # Check if the response status code is 500 (Internal Server Error)
         self.assertEqual(response.status_code, 500)
         self.assertEqual(response.json, {'error': 'Get error'})
+
+# Tests for portal notifications"
+
+    @patch('controllers.notification.NotificationController.get_notifications')
+    def test_get_notifications(self, mock_get_notifications):
+        # Mock the behavior of get_notifications to return a list of notifications
+        mock_get_notifications.return_value = [{'message': 'Notification 1'}, {'message': 'Notification 2'}]
+
+        # Simulate a GET request with JWT token to get notifications
+        response = self.app.get('/api/notifications/',
+                                headers={'Authorization': f'Bearer {self.get_auth_token}'})
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # check the response JSON  content
+        response_json = json.loads(response.data.decode('utf-8'))
+        self.assertIsInstance(response_json, list)
+        self.assertEqual(len(response_json), 2)
+
+    @patch('controllers.notification.NotificationController.set_notification_as_read')
+    def test_set_notification_as_read(self, mock_set_notification_as_read):
+        # Mock the behavior of set_notification_as_read to return a success message
+        mock_set_notification_as_read.return_value = {'message': 'Notification marked as read'}
+
+        # Simulate a PUT request with JWT token to set notification as read
+        notification_id = 2  # Replace with a valid notification ID
+        response = self.app.put(f'/api/notifications/{notification_id}',
+                                headers={'Authorization': f'Bearer {self.get_auth_token}'})
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # check the response JSON structure
+        response_json = json.loads(response.data.decode('utf-8'))
+        self.assertEqual(response_json['message'], 'Notification marked as read')
 
 if __name__ == '__main__':
     unittest.main()
