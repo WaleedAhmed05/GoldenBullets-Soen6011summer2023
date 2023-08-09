@@ -162,14 +162,14 @@ const Candidates = ({ skills }) => {
 			<main className={styles.jobsPage}>
 				<div className="container">
 					<div className={styles.title}>
-						<h1>Browse all jobs</h1>
+						<h1>Browse all candidates</h1>
 						{user && !showingSaved ? <button type="button" onClick={displaySavedCandidates}>View bookmarked candidates</button> : null}
 						{user && showingSaved ? <button type="button" onClick={displaySavedCandidates}>View all candidates</button> : null}
 					</div>
 
 					{/* Search */}
 					<form className={styles.search} onSubmit={searchJobs}>
-						<input type="text" placeholder="Search jobs" onChange={(e) => setSearch(e.target.value)} />
+						<input type="text" placeholder="Search candidates" onChange={(e) => setSearch(e.target.value)} />
 						<button type="submit">Search</button>
 					</form>
 
