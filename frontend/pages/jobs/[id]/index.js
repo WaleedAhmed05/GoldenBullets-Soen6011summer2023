@@ -33,7 +33,6 @@ const Job = ({ job }) => {
 											<li className={styles.companyMetaItem}>Website: <a href={addHttps(job.company?.website)} target="_blank">{job.company?.website}</a></li>
 											<li className={styles.companyMetaItem}>Size: {job.company?.num_employees}</li>
 										</ul>
-										<Link href={`/companies/${job.company.id}`} className={styles.companyProfile}>Company profile</Link>
 									</div>
 								)}
 								{user?.type === 'employer' && user.id === job?.employer_id && (
