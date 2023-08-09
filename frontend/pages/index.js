@@ -43,24 +43,24 @@ const Home = () => {
 								<div className={styles.aboutLineTitle}>
 									{/*nastaran*/}
 									<img src="https://drive.google.com/uc?id=1D022jl2QCnTl4llmNQ88FzXdebgT2jUA"
-										loading="lazy" alt="Nastaran&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Nastaran" className="testimonial-image"/>
 									<div>
 										<h2 >Nastaran Naseri</h2>
 										<div className={styles.aboutDesc}>Backend/Database</div>
 										<p className={styles.aboutParagraph}>In charge of both the design and management of
-											the platform's database architecture, in addition to developing the server-side
+											the platform&apos;s database architecture, in addition to developing the server-side
 											logic and functionality.</p>
 									</div>
 								</div>
 								<div className={styles.aboutLineTitle}>
 									{/*dina*/}
 									<img src="https://drive.google.com/uc?id=1Id2II3busOWuqXkCWID8Z73QUxvhJoWI"
-										loading="lazy" alt="Dina&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Dina" className="testimonial-image"/>
 									<div>
 										<h2 >Dina Omidvar Tehrani</h2>
 										<div className={styles.aboutDesc}>Frontend/Backend</div>
 										<p className={styles.aboutParagraph}>Her expertise centers on the implementation of
-											the platform's user interface and user experience (UI/UX) elements, in addition
+											the platform&apos;s user interface and user experience (UI/UX) elements, in addition
 											to her involvement in developing the server-side logic and functionality.</p>
 									</div>
 								</div>
@@ -69,7 +69,7 @@ const Home = () => {
 								<div className={styles.aboutLineTitle}>
 									{/*sadman*/}
 									<img src="https://drive.google.com/uc?id=1O7DxI_2UzRqRSnAxDBTdZTvpFZpR0nI8"
-										loading="lazy" alt="Sadman&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Sadman" className="testimonial-image"/>
 									<div>
 										<h2 >Sadman Shawmik Himalay</h2>
 										<div className={styles.aboutDesc}>Frontend/Backend</div>
@@ -81,7 +81,7 @@ const Home = () => {
 								<div className={styles.aboutLineTitle}>
 									{/*yungash*/}
 									<img src="https://drive.google.com/uc?id=1cV_S6Ex6HboccnZD4sTs2eqfC6WZeTJD"
-										loading="lazy" alt="Yugansh&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Yugansh" className="testimonial-image"/>
 									<div>
 										<h2 >Yugansh Goyal</h2>
 										<div className={styles.aboutDesc}>Backend/Database</div>
@@ -95,7 +95,7 @@ const Home = () => {
 								<div className={styles.aboutLineTitle}>
 									{/*waleed*/}
 									<img src="https://drive.google.com/uc?id=1WFDupf6HathcdVh96qAnzKxAS0kAqI3v"
-										loading="lazy" alt="Waleed&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Waleed" className="testimonial-image"/>
 									<div>
 										<h2 >Waleed Ahmed Siddiqui</h2>
 										<div className={styles.aboutDesc}>Backend/Testing</div>
@@ -108,13 +108,13 @@ const Home = () => {
 								<div className={styles.aboutLineTitle}>
 									{/*simon*/}
 									<img src="https://drive.google.com/uc?id=1y9LpDRFwOCQa4MXfq69g5vl7G8BVocgu"
-										loading="lazy" alt="Ziran&#x27;s picture" className="testimonial-image"/>
+										loading="lazy" alt="Ziran" className="testimonial-image"/>
 									<div>
 										<h2 >Ziran Cao</h2>
 										<div className={styles.aboutDesc}>Backend/Database</div>
 										<p className={styles.aboutParagraph}>His primary focus lies in the development of
 											server-side logic and functionality, alongside being accountable for the design
-											and management of the platform's database architecture.</p>
+											and management of the platform&apos;s database architecture.</p>
 									</div>
 								</div>
 							</div>
