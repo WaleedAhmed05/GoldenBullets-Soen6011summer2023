@@ -11,7 +11,8 @@ const Header = () => {
 			<nav className={styles.headerNav}>
 				{user ? (
 					<>
-						{user?.type === 'employer' ? (
+						<Link href='/profile'>{user.type === 'employer' ? 'Company Profile' : 'Profile' }</Link>
+						{user.type === 'employer' ? (
 							<>
 								<Link href='/jobs/create'>Post a job</Link>
 								<Link href="/jobs/manage">Manage job posts</Link>
