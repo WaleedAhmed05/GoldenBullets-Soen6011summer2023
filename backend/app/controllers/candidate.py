@@ -18,3 +18,11 @@ class CandidateController:
         except Exception as e:
             print('Error: ', e)
             return {'error': str(e)}, 500
+        
+    # Method to retrieve all candidates
+    def get_candidates():
+        try:
+            return CandidateService.get_candidates()
+        except Exception as e:
+            print('Error: ', e)
+            return {'error': str(e)}, 500

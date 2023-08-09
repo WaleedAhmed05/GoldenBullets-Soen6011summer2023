@@ -59,4 +59,23 @@ class CandidateService:
 		except Exception as e:
 			print('Error: ', e)
 			return {'error': str(e)}, 500
+		
+	@staticmethod
+	@jwt_required()
+	def get_candidates():
+		try:
+			# Verify jwt token
+			if not get_jwt_identity():
+				return {'error': 'Unauthorized'}, 401
+			# Make sure user is an employer
+			user_email = get_jwt_identity()
+			user = User.query.filter_by(email=user_email).first()
+			if user.type != 'employer':
+				return {'error': 'Unauthorized'}, 401
+			# Return all candidates
+			candidates = Candidate.query.all()
+			return [candidate.serialize() for candidate in candidates]
+		except Exception as e:
+			print('Error: ', e)
+			return {'error': str(e)}, 500
 
