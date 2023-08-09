@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import styles from '@/styles/Applications.module.scss'
 import { formatDate } from '@/utils'
-import {log} from "next/dist/server/typescript/utils";
 
 const Applications = () => {
 	const { user, token } = useAppContext()
@@ -21,35 +20,15 @@ const Applications = () => {
 	location: '',
 	})
 
-  	function handleClick(s) {
-
-		setStatus(s);
-	  }
-
-
-	const createInvite = async (e) => {
-		e.preventDefault()
-		// Send a POST request to the API to create a new job
-		const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/jobs/applications/${id}/interview`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`
-			},
-			body: JSON.stringify(invite)
-		})
-		const data = await res.json()
-		if (res.ok) {
-			console.log(data)
-		}
-	}
-
-
 	useEffect(() => {
 		if (token && id && applications?.length === 0) {
 			fetchApplications()
 		}
 	}, [token, id, applications])
+
+	function handleClick(s) {
+	  setStatus(s);
+  }
 
 	const fetchApplications = async () => {
 		try {
@@ -83,14 +62,14 @@ const Applications = () => {
 			const data = await response.json()
 			if (response.ok && data.success) {
 				fetchApplications()
-				// router.push(`/jobs/${id}/applications/interview`)
 			}
 		} catch (error) {
 			console.error('Error updating application status', error)
 		}
 	}
 
-	const sendInvite = async (id, status,invite) => {
+	const sendInvite = async (e, id, status, invite) => {
+		e.preventDefault()
 		try {
 			const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/applications/${id}`, {
 				method: 'PUT',
@@ -98,13 +77,18 @@ const Applications = () => {
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${token}`
 				},
-				body: JSON.stringify({ status ,invite})
+				body: JSON.stringify({ status, invite })
 			})
 			const data = await response.json()
 			if (response.ok && data.success) {
 				fetchApplications()
-				console.log({ status ,invite})
-				// router.push(`/jobs/${id}/applications/interview`)
+				alert('Interview invitation sent')
+				// Clear form
+				setInvite({
+					date: '',
+					time: '',
+					location: '',
+				})
 			}
 		} catch (error) {
 			console.error('Error updating application status', error)
@@ -124,62 +108,62 @@ const Applications = () => {
 					)}
 					{user ? (
 						<>
-							<h1>Applications for job post</h1>
+							<h1>Applications for this job post</h1>
 							<div className={styles.applications}>
 								{applications?.length  ? (
 									applications.map(application => (
-
 										<div key={application.id} className={styles.application}>
-										<div className={styles.applicationBase}>
-											<div className={styles.applicationDetails}>
-												<h2 className={styles.applicantName}>
-													{`${application.candidate?.first_name} ${application.candidate?.last_name}`}
-													<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
-												</h2>
-												<p>{application.status}</p>
-												<p>Email: {application.candidate?.email}</p>
-												<p>Applied on: {formatDate(application.created_at)}</p>
-												<Link href={application.cv} target='_blank'>View CV</Link>
-												<Link href={`/candidate/${application.candidate.id}`}>View candidate profile</Link>
-											</div>
-											<div className={styles.applicationButtons}>
-												<button 
-													type="button" 
-													onClick={() => updateStatus(application.id, 'approved')}
-													disabled={application.status === 'approved'}											
-												>Approve</button>
-												{/*<Link href='/jobs/${id}/applications/interview'>*/}
+											<div className={styles.applicationBase}>
+												<div className={styles.applicationDetails}>
+													<h2 className={styles.applicantName}>
+														{`${application.candidate?.first_name} ${application.candidate?.last_name}`}
+														<span className={`${styles.status} ${styles[application.status]}`}>{application.status}</span>
+													</h2>
+													<p>Email: {application.candidate?.email}</p>
+													<p>Applied on: {formatDate(application.created_at)}</p>
+													<Link href={application.cv} target='_blank'>View CV</Link>
+													<Link href={`/candidate/${application.candidate.id}`}>View candidate profile</Link>
+												</div>
+												<div className={styles.applicationButtons}>
+													<button 
+														type="button" 
+														onClick={() => updateStatus(application.id, 'approved')}
+														disabled={application.status === 'approved'}											
+													>Approve</button>
 													<button
 														type="button"
-														// onClick={() => updateStatus(application.id, 'interview')}
 														onClick={() => handleClick('interview')}
 														disabled={application.status === 'interview'}
-													>Ask For Interview</button>
-												{/*</Link>*/}
-												<button
-													type="button" 
-													onClick={() => updateStatus(application.id, 'rejected')}
-													disabled={application.status === 'rejected'}
-												>Reject</button>
+													>
+														Ask For Interview
+													</button>
+													<button
+														type="button" 
+														onClick={() => updateStatus(application.id, 'rejected')}
+														disabled={application.status === 'rejected'}
+													>Reject</button>
+												</div>
 											</div>
-										</div>
+
 											{status === 'interview' ? (<div className={styles.createInterviewForm}>
 
-											<h2>Create a interview invitaion</h2>
-											<form onSubmit={()=>sendInvite(application.id, 'interview',invite)} >
+											<h3>Create a interview invitaion</h3>
+											<form onSubmit={(e) => sendInvite(e, application.id, 'interview', invite)} >
 												<div className={styles.formGroup}>
-													<label htmlFor="start">Date:</label>
-													<input type="date" id="start" name="trip-start"
-														   value={invite.date}
-														   min="2018-01-01" max="2024-12-31"
-														   onChange={(e) => setInvite({ ...invite, date: e.target.value })} />
-
-													<label htmlFor="appt">Time:</label>
-													<input type="time" id="appt" name="appt"
-														   value={invite.time}
-														   min="09:00" max="18:00"
-														   onChange={(e) => setInvite({ ...invite, time: e.target.value })} />
-
+													<label htmlFor="date">Date:</label>
+													<input type="date" id="date" name="date"
+														value={invite.date}
+														min="2018-01-01" max="2024-12-31"
+														onChange={(e) => setInvite({ ...invite, date: e.target.value })} />
+												</div>
+												<div className={styles.formGroup}>
+													<label htmlFor="date">Time:</label>
+													<input type="time" id="time" name="time"
+														value={invite.time}
+														min="09:00" max="18:00"
+														onChange={(e) => setInvite({ ...invite, time: e.target.value })} />
+												</div>
+												<div className={styles.formGroup}>
 													<label htmlFor="location">location</label>
 													<input type="text" id="location" name="location" required value={invite.location} onChange={(e) => setInvite({ ...invite, location: e.target.value })} />
 												</div>
@@ -187,9 +171,8 @@ const Applications = () => {
 													<button type="submit" className="btn btn-primary">Invite</button>
 												</div>
 											</form>
-
-						</div>) : null}
-										</div>
+										</div>) : null}
+									</div>
 									))
 								) : (
 									<p>There are no applications for this job post yet.</p>

@@ -55,14 +55,14 @@ const CreateInvite = () => {
 							<h1>Create a interview invitaion</h1>
 							<form onSubmit={createInvite} className={styles.createJobForm}>
 								<div className={styles.formGroup}>
-									<label htmlFor="start">Date:</label>
-									<input type="date" id="start" name="trip-start"
+									<label htmlFor="date">Date:</label>
+									<input type="date" id="date" name="date"
 										   value={invite.date}
 										   min="2018-01-01" max="2024-12-31"
 										   onChange={(e) => setInvite({ ...invite, date: e.target.value })} />
 
-									<label htmlFor="appt">Time:</label>
-									<input type="time" id="appt" name="appt"
+									<label htmlFor="time">Time:</label>
+									<input type="time" id="time" name="time"
 										   value={invite.time}
 										   min="09:00" max="18:00"
 										   onChange={(e) => setInvite({ ...invite, time: e.target.value })} />

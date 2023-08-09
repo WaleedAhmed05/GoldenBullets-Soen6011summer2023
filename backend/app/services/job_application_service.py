@@ -53,7 +53,6 @@ class JobApplicationService:
 			# For each application, get candidate and attach to application
 			app_with_candidate = []
 			for application in applications:
-				print(application)
 				candidate = Candidate.query.get(application.candidate_id)
 				application_dict = application.serialize()
 				application_dict['candidate'] = candidate.serialize()
@@ -180,30 +179,3 @@ class JobApplicationService:
 			return app_with_candidate if app_with_candidate else []
 		except Exception as e:
 			return {'error': str(e)}, 400
-
-	# @staticmethod
-	# @jwt_required()
-	# def set_job_application_interview(id, request):
-	# 	try:
-	# 		# Verify jwt token
-	# 		if not get_jwt_identity():
-	# 			return {'error': 'Unauthorized'}, 401
-	#
-	# 		user_email = get_jwt_identity()
-	# 		user = User.query.filter_by(email=user_email).first()
-	# 		# Get candidate by user id
-	# 		application_id = Candidate.query.get(user.id)
-	# 		interview_date = request.json['date'] if 'date' in request.json else None
-	# 		interview_time = request.json['time'] if 'time' in request.json else None
-	# 		interview_location = request.json['location'] if 'location' in request.json else None
-	# 		# Create job_application instance
-	# 		invite = Invite(application_id=application_id, interview_date=interview_date, interview_time=interview_time, interview_location=interview_location)
-	# 		db.session.add(invite)
-	# 		db.session.commit()
-	# 		# Create notification for employer
-	# 		job_post = JobPost.query.get(id)
-	# 		NotificationService.create_notification(job_post.employer_id, 'Congrate you got an interview invitation', f'You have been invited for an interview in {interview_date} at {interview_time} in {interview_location} ')
-	# 		return invite.serialize()
-	# 	except Exception as e:
-	# 		print('error', e)
-	# 		return {'error': str(e)}, 400
