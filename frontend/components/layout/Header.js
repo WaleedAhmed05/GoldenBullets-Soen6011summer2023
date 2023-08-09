@@ -16,6 +16,7 @@ const Header = () => {
 							<>
 								<Link href='/jobs/create'>Post a job</Link>
 								<Link href="/jobs/manage">Manage job posts</Link>
+								<Link href="/candidates">Browse candidates</Link>
 							</>
 						) : (
 							<>
