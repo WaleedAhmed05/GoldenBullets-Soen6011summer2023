@@ -18,11 +18,13 @@ class MiscRouteTests(unittest.TestCase):
 
     def setUp(self):
         app.app.testing = True
-        app.app.config['JWT_SECRET_KEY'] = getenv('JWT_SECRET_KEY')
+        #app.config['SECRET_KEY'] = getenv('SECRET_KEY')
+        app.app.config['JWT_SECRET_KEY'] = 'mysecretKey'
         self.app = app.app.test_client()
 
     def get_auth_token(self):
         # Generate a mock JWT token for testing
+        print(create_access_token(identity="test_user"))
         return create_access_token(identity="test_user")
 
 # Tests for job search  #
