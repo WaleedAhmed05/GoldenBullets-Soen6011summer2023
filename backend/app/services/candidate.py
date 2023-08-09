@@ -1,5 +1,6 @@
 from models.user import User
 from models.candidate import Candidate
+from models.skill import Skill
 from extensions import db
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from flask import request
@@ -36,6 +37,18 @@ class CandidateService:
 				candidate.linkedin_url = request.json['linkedin_url']
 			if 'github_url' in request.json:
 				candidate.github_url = request.json['github_url']
+			if 'skills' in request.json:
+				for skill in request.json['skills']:
+					# Check if candidate already has skill
+					if skill in [skill.name for skill in candidate.skills]:
+						continue
+
+					# If skill does not exist, create it and append
+					new_skill = Skill.query.filter_by(name=skill).first()
+					if not new_skill:
+						skill = Skill(name=skill)
+						db.session.add(skill)
+					candidate.skills.append(skill)
 
 			# Commit changes to database
 			db.session.commit()
