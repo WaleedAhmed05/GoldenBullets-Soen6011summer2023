@@ -225,7 +225,7 @@ const Candidates = ({ skills }) => {
 												<option key={job.id} value={job.id}>{job.title}</option>
 											)) : null}
 										</select>
-										<button type="submit">Invite</button>
+										<button type="submit" className={styles.saveJob}>Invite</button>
 									</form>
 								: null}
 							</div>
