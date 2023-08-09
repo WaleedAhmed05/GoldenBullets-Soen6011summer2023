@@ -15,6 +15,7 @@ const Profile = () => {
 		work_experience: [],
 		education: [],
 		certifications: [],
+		skills: '',
 	})
 
 	const [company, setCompany] = useState({
@@ -38,6 +39,7 @@ const Profile = () => {
 				work_experience: user.work_experience || [],
 				education: user.education || [],
 				certifications: user.certifications || [],
+				skills: user.skills?.map((skill) => skill.name).join(', '),
 			})
 		} else if (user && user.type === 'employer') {
 			getCompanyData()
@@ -69,8 +71,13 @@ const Profile = () => {
 
 	const updateProfile = async (e) => {
 		e.preventDefault()
+		// Parse skills into array
+		if (profile.skills) {
+			profile.skills = profile.skills?.split(',').map((skill) => skill.trim())
+		}
 		// Remove empty fields
 		const profileData = Object.fromEntries(Object.entries(profile).filter(([_, v]) => v))
+		
 		try {
 			if (!user) return
 			const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/candidate/${user.id}`, {
@@ -148,58 +155,63 @@ const Profile = () => {
 										<input type="file" id="resume_url" name="resume_url" value={profile.resume_url || ''} onChange={(e) => setProfile({ ...profile, resume_url: e.target.value })} />
 									</div>
 									{/* Work experience */}
-										<div className={styles.formGroup}>
-											<label htmlFor={`work_experience`}>Work Experience</label>
-											{['', '', '',].map((_, i) => (
-												<textarea 
-													key={i}
-													type="text" 
-													id={`work_experience_${i}`} 
-													name={`work_experience_${i}`} 
-													value={profile.work_experience?.[i] || ''}
-													onChange={(e) => {
-														const newWorkExperience = [...profile.work_experience]
-														newWorkExperience[i] = e.target.value
-														setProfile({ ...profile, work_experience: newWorkExperience })
-													}}
-												></textarea>
-											))}
-										</div>
+									<div className={styles.formGroup}>
+										<label htmlFor={`work_experience`}>Work Experience</label>
+										{['', '', '',].map((_, i) => (
+											<textarea 
+												key={i}
+												type="text" 
+												id={`work_experience_${i}`} 
+												name={`work_experience_${i}`} 
+												value={profile.work_experience?.[i] || ''}
+												onChange={(e) => {
+													const newWorkExperience = [...profile.work_experience]
+													newWorkExperience[i] = e.target.value
+													setProfile({ ...profile, work_experience: newWorkExperience })
+												}}
+											></textarea>
+										))}
+									</div>
 									{/* Education */}
-										<div className={styles.formGroup}>
-											<label htmlFor={`education`}>Education</label>
-											{['', '', '',].map((_, i) => (
-												<textarea 
-													key={i}
-													type="text" 
-													id={`education_${i}`} 
-													name={`education_${i}`}
-													value={profile.education?.[i] || ''}
-													onChange={(e) => {
-														const newEducation = [...profile.education]
-														newEducation[i] = e.target.value
-														setProfile({ ...profile, education: newEducation })
-													}}
-												></textarea>
-											))}												
-										</div>
+									<div className={styles.formGroup}>
+										<label htmlFor={`education`}>Education</label>
+										{['', '', '',].map((_, i) => (
+											<textarea 
+												key={i}
+												type="text" 
+												id={`education_${i}`} 
+												name={`education_${i}`}
+												value={profile.education?.[i] || ''}
+												onChange={(e) => {
+													const newEducation = [...profile.education]
+													newEducation[i] = e.target.value
+													setProfile({ ...profile, education: newEducation })
+												}}
+											></textarea>
+										))}												
+									</div>
 									{/* Certifications */}
-										<div className={styles.formGroup}>
-											<label htmlFor={`certification`}>Certifications</label>
-											{['', '', '',].map((_, i) => (
-												<textarea 
-													key={i}
-													id={`certification_${i}`} 
-													name={`certification_${i}`}
-													value={profile.certifications?.[i] || ''}
-													onChange={(e) => {
-														const newCertification = [...profile.certifications]
-														newCertification[i] = e.target.value
-														setProfile({ ...profile, certifications: newCertification })
-													}}
-												></textarea>
-											))}
-										</div>
+									<div className={styles.formGroup}>
+										<label htmlFor={`certification`}>Certifications</label>
+										{['', '', '',].map((_, i) => (
+											<textarea 
+												key={i}
+												id={`certification_${i}`} 
+												name={`certification_${i}`}
+												value={profile.certifications?.[i] || ''}
+												onChange={(e) => {
+													const newCertification = [...profile.certifications]
+													newCertification[i] = e.target.value
+													setProfile({ ...profile, certifications: newCertification })
+												}}
+											></textarea>
+										))}
+									</div>
+									{/* Skills */}
+									<div className={styles.formGroup}>
+										<label htmlFor="skills">Skills (separate by comma)</label>
+										<textarea id="skills" name="skills" required value={profile.skills || ''} onChange={(e) => setProfile({ ...profile, skills: e.target.value })}></textarea>
+									</div>
 									<div className={styles.formGroup}>
 										<button type="submit" className="btn btn-primary">Update profile</button>
 									</div>
