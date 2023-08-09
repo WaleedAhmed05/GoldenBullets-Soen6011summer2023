@@ -33,7 +33,7 @@ const Header = () => {
 						</Link>
 					</>
 				) : (
-					<Link href='/login'>Login</Link>
+					<Link href='/login' id="loginbtn">Login</Link>
 				)}
 			</nav>
 		</header>
