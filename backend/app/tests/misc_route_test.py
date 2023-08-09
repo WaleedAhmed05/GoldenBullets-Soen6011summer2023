@@ -74,7 +74,31 @@ class MiscRouteTests(unittest.TestCase):
         # Check if the response JSON contains the error message
         self.assertEqual(response.json, {'error': 'Filter error'})
 
-    # Similar tests can be added for the test_search and test_list_all_industries methods
+# Tests for inviting candidate component #
+
+    @patch('controllers.invite_candidate_controller.InviteCandidateController.invite_candidate')
+    def test_invite_candidate(self, mock_invite_candidate):
+        # Mock the InviteCandidateController.invite_candidate() method
+        mock_invite_candidate.return_value = {'message': 'Candidate invited successfully'}
+
+        # Simulate a POST request with some JSON data (request data)
+        response = self.app.post('/api/invite_candidate/', json={'candidate_id': 101})
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, {'message': 'Candidate invited successfully'})
+
+    @patch('controllers.invite_candidate_controller.InviteCandidateController.invite_candidate')
+    def test_invite_candidate_error(self, mock_invite_candidate):
+        # Mock the InviteCandidateController.invite_candidate() method
+        mock_invite_candidate.side_effect = Exception('Invitation error')
+
+        # Simulate a POST request with some JSON data (request data)
+        response = self.app.post('/api/invite_candidate/', json={'candidate_id': 123})
+
+        # Check if the response status code is 500 (Internal Server Error)
+        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.json, {'error': 'Invitation error'})
 
 if __name__ == '__main__':
     unittest.main()
