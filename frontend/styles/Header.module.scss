@@ -4,12 +4,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1rem 2rem;
-	background-color: $black-color;
+	padding: 1rem 3.5rem;
+	//background-color: $black-color;
 	z-index: 100;
-	font-size: 0.875rem;
+	background-color: #101011;
+	font-size: 0.98rem;
 	color: $white-color;
-
+	font-weight: 800;
+    height: 50px;
 	.headerNav {
 		display: flex;
 		align-items: center;
@@ -20,5 +22,18 @@
 		margin: 0 1rem;
 		color: $white-color;
 		text-decoration: none;
+		position: relative;
+		overflow: hidden;
+		transition: color 0.6s, font-size 0.6s;
 	}
+
+
+   a:hover{
+	   color:#51DDC3;
+	   font-size: larger;
+
+   }
+
+
+
 }
