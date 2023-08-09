@@ -41,7 +41,9 @@ color: white;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	color: $black-color;
 	background: #e1e1e1;
-	a {
+
+	// All a tags except the ones inside .links
+	a:not(.links a) {
 		display: block;
 		text-decoration: none;
 		color: inherit;
@@ -69,6 +71,15 @@ color: white;
 			text-transform: uppercase;
 			border-radius: 8px;
 			border: 1px solid $black-color;
+		}
+	}
+
+	.links {
+		margin-bottom: 1rem;
+		
+		a {
+			display: inline-block;
+			margin-right: 1rem;
 		}
 	}
 

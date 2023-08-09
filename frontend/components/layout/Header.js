@@ -20,7 +20,6 @@ const Header = () => {
 							</>
 						) : (
 							<>
-								<Link href='/profile'>My profile</Link>
 								<Link href='/jobs'>Browse jobs</Link>
 								<Link href='/applications'>My applications</Link>
 							</>

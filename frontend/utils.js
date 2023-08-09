@@ -31,3 +31,8 @@ export const formatDate = (date) => {
 		hour12: true,
 	})
 }
+
+/* Join name */
+export const joinName = (user) => {
+	return `${user.first_name} ${user.last_name}`
+}
