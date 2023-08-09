@@ -20,3 +20,11 @@ def get_profile(id):
 	except Exception as e:
 		print('Error: ', e)
 		return jsonify({'error': str(e)}), 500
+
+@candidate_routes.route('/', methods=['GET'])
+def get_candidates():
+	try:
+		return CandidateController.get_candidates()
+	except Exception as e:
+		print('Error: ', e)
+		return jsonify({'error': str(e)}), 500
